@@ -1,0 +1,94 @@
+\documentclass[a4paper]{ctexart}
+
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{ulem}
+\newcommand{\li}{\uline{\hspace{0.5em}}}
+
+\begin{document}
+
+\title{高级体系结构知识点}
+\author{杨森}
+\maketitle
+
+\section{概述}
+\subsection{名词解释}
+\begin{enumerate}
+  \item \emph{\textbf{计算机体系结构}}:计算机系统结构是指传统机器程序员看到的计算机属性，即概念性结构和功能特性。(2001)
+  
+\end{enumerate}
+
+\section{指令系统}
+\subsection{名词解释}
+\begin{enumerate}
+  \item \emph{\textbf{通用寄存器型机器}}:指令系统为通用寄存器型结构的机器。(2001)
+  \item 指令系统的\emph{\textbf{规整性}}:指令系统的规整性主要包括对称性和均匀性，对称性是指所有与指令系统有关的存储单元的使用、操作码的设置等都是对称的；均匀性对于各种不同的操作数类型、字长、操作种类和数据存储单元，指令的设置都要同等对待。(2001)
+\end{enumerate}
+
+\section{流水线}
+\subsection{名词解释}
+\begin{enumerate}
+  \item \emph{\textbf{结构相关}}:在流水线处理机中，如果某种指令组合因为资源冲突而不能正常执行，则称该处理机有结构相关。(2001)
+\end{enumerate}
+
+
+\section{向量处理机}
+
+\section{指令级并行}
+\subsection{名词解释}
+\begin{enumerate}
+  \item \emph{\textbf{乱序流出(Out of order issue)}}:指令的流出顺序与程序顺序不同。(2001)
+  \item \emph{乱序执行(Out of order Execution)}:指令的执行顺序与程序顺序不同。
+  \item \emph{乱序完成(Out of order completion)}:指令的完成顺序与程序顺序不同。
+  \item \emph{\textbf{再定序缓冲(ReOrder Buffer)}}:暂存指令执行的结果，使其不直接写回到寄存器或者存储器，能够在分支错误的情况下恢复现场。(2001)
+\end{enumerate}
+
+\section{存储系统}
+\subsection{名词解释}
+\begin{enumerate}
+  \item \emph{\textbf{虚拟cache}}:虚拟Cache是指可以直接用虚拟地址进行访问的Cache，其标识存储器中存放的是虚拟地址，进行地址检测用的也是虚拟地址。(2001)
+  \item \emph{\textbf{存储体冲突}}:两个访问请求要求访问同一个存储体。(2001)
+\end{enumerate}
+
+\section{互连网络}
+
+\begin{enumerate}
+  \item 在拓扑上，互连网络为输入和输出两组节点之间提供了一组\emph{\underline{互连}}或\emph{\underline{映像}}。
+  \item \textbf{静态互连网络}:由点和点直接相连而成
+  \item \textbf{动态互连网络}:由\underline{\emph{开关通道}}实现，可以动态改变结构
+  \item \textbf{节点度}:与节点相连接的边的数目称为节点度，这里的边表示链路或通道，进入节点的通道数为入度，从节点出来的通道数为出度(\emph{节点度=入度+出度})。
+  \item \textbf{网络直径}:网络中任意两个节点间最短路径长度的最大值称为\underline{\emph{网络直径}}。
+  \item \textbf{等分宽度}:将网络切成任意相等两半的各种切法中，沿切口的最小通道边数称为\underline{\emph{通道等分宽度}}
+  \item 对于一个网络，如果从任何一个节点看，拓扑结构都一样，则称此网络为对称网络。
+  \item \textbf{路由}:在网络通信中对路径的选择与指定。
+\end{enumerate}
+
+\section{多处理机}
+\subsection{同步}
+\begin{enumerate}
+  \item 基本硬件原语:\emph{原子交换(Atomic Exchange)}将一个存储单元的值和一个寄存器的值进行交换；\emph{测试并置定(test\li and\li set)}先测试一个存储单元的值，如果符合条件则修改其值；\emph{读取并加1(fetch\li and\li increment)}返回存储单元的值并自动增加该值;\emph{指令对LL/SC}，从第二条指令的返回值判断该指令执行是否成功，这两条指令之间不能插入其他对存储单元进行操作的其他指令。
+
+前三种硬件原语都要执行两次访存操作。LL/SC可以用于实现其他同步原语
+例:用LL/SC实现原子交换
+\begin{equation}
+\begin{split}
+  try:\ &OR \qquad R3, R4, R0 \\
+  &LL  \qquad R2, 0(R1) \\
+  &SC \qquad R3, 0(R1) \\
+  &BNQZ  \quad R3, try \\
+  &MOV \quad R4, R2
+\end{split}
+\end{equation}
+
+\item \emph{旋转锁(Spin Locks)}:处理器不停地请求获得使用权的锁(锁占用时间少，且加锁过程延迟很低时可采用旋转锁)
+\item 使用Cache一致性实现锁的好处:1.可使“环绕”进程(对锁不停的进行测试和请求占用的循环过程)只对本地Cache中的锁(副本)进行操作；2.可利用所访问的局部性，即处理器最近使用过的锁不久又会使用。
+
+\item \emph{\underline{栅栏同步}},栅栏强制所有的到达该栅栏的进程进行等待，直到全部的进程到达栅栏，然后释放全部的进程，从而形成同步。
+
+栅栏的实现需要两个旋转锁，一个用来记录到达栅栏的进程数，另一个用来封锁进程直至最后一个进程到达栅栏。
+\underline{栅栏的一个缺陷}:假设有一个进程还没有离开栅栏，即停留在旋转锁等待操作上。如果另外一个比较快的进程又到达了栅栏，而上一次循环的进程中最后那个还没来得及离开栅栏。那么这个“快”进程就会吧release置为0，从而把上次循环的“慢”进程捆到这个栅栏上，这样所有的进程在这个栅栏上的又一次使用都会处于无线等待状态，因为已经到达栅栏的进程数目永远不会等于total。
+
+\end{enumerate}
+
+\end{document}

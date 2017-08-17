@@ -1,0 +1,138 @@
+\documentclass[a4paper]{ctexart}
+
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{ulem}
+\newcommand{\li}{\uline{\hspace{0.5em}}}
+\renewcommand{\labelenumi}{\arabic{enumi})}
+
+\begin{document}
+
+\title{数理逻辑课后题/考题答案}
+\author{作者:杨森}
+\maketitle
+
+\section{课后题}
+\noindent 2.解：
+\begin{enumerate}
+  \item =>
+  利用结构归纳法证明
+  \begin{enumerate}
+    \item Y是命题变元，此时Y的生成序列即为自身；
+    \item $Y=\neg A$，A的生成序列为$A_1,A_2,\cdots,A_m(=A)$,则Y的生成序列为$A_1,A_2,\cdots,A_m,Y$;
+    \item $Y=B\vee C$，B的生成序列为$B_1,B_2,\cdots,B_m(=B)$，C的生成序列为$C_1,C_2,\cdots,C_n(=C)$，则Y的生成序列为$B_1,B_2,\cdots,B_m,C_1,C_2,\cdots,C_n，Y=(B\vee C)$
+  \end{enumerate}
+  
+  \item <= 
+  利用第二归纳法证明
+  
+  假设Y的生成序列为$Y_1,Y_2,\cdots,Y_m(=Y)$，证明$Y_i(1\leq i\leq m)$是合式公式
+  \begin{enumerate}
+    \item $Y_i$是命题变元，则$Y_i$是合适公式；
+    \item $Y_i=\neg Y_j(j<i)$，因为$Y_j$是合式公式，故$Y_i$也是合式公式；
+    \item $Y_i=Y_j \vee Y_k(j,k<i)$，因为$Y_j$,$Y_k$是合式公式，故$Y_i$也是合式公式。
+  \end{enumerate}
+\end{enumerate}
+综上，Y为合式公式当且仅当Y有一个生成序列。\newline
+
+\noindent 5.解:
+用结构归纳法证明
+\begin{enumerate}
+  \item A为命题变元p，显然结论成立；
+  \item $A=\neg B$，因为B满足条件，则$\neg (B)$即A也满足条件；
+  \item $A=B\vee C$，因为B，C满足条件，则$(B)\vee (C)$也满足条件
+\end{enumerate}
+综上，若表达式A为合式公式，则最终计数为0.\newline
+
+\noindent 8.解:
+用公式结构归纳法证明
+\begin{enumerate}
+  \item A为命题变元p
+  \begin{enumerate}
+    \item $p\in\{p_1,p_2,\cdots,p_n\}$且$p=p_i$，则$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}A=B_i$，即$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}A$为合式公式;
+    \item $p\not\in\{p_1,p_2,\cdots,p_n\}$,则$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}A=A$;
+  \end{enumerate}
+  \item $A=\neg B$,则$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}B$为合式公式，所以$\neg S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}B=S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}\neg B$为合式公式，即$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}A$为合式公式；
+  \item $A=B\vee C$,则$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}B$,$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}C$为合式公式，所以$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}B \vee S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}C=S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}(B\vee C)$为合式公式，即$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}A$为合式公式；
+\end{enumerate}
+综上，若A是合式公式，则$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}A$为合式公式。\newline
+
+\noindent 9.解：
+若C为永真式，根据Godel完全性定理则$\vdash C$，设C的证明序列为$C_1,C_2,\cdots,C_n$,用第二归纳法证明，$\vdash S^{p_1,p_2,\cdots,p_n}_{q_1,q_2,\cdots,q_n}C_i,1\leq i\leq n$:
+\begin{enumerate}
+  \item $C_i\in Aoxims$，显然$S^{p_1,p_2,\cdots,p_n}_{q_1,q_2,\cdots,q_n}C_i$也为公理
+  \item 存在$j,k<i$使$C_k=C_j\supset C_i$，因为$\vdash S^{p_1,p_2,\cdots,p_n}_{q_1,q_2,\cdots,q_n}C_j$且$\vdash S^{p_1,p_2,\cdots,p_n}_{q_1,q_2,\cdots,q_n}C_k$,即$\vdash S^{p_1,p_2,\cdots,p_n}_{q_1,q_2,\cdots,q_n}C_j\supset S^{p_1,p_2,\cdots,p_n}_{q_1,q_2,\cdots,q_n}C_i$，有MP规则可推出$\vdash S^{p_1,p_2,\cdots,p_n}_{q_1,q_2,\cdots,q_n}C_i$。
+\end{enumerate}
+综上$\vdash S^{p_1,p_2,\cdots,p_n}_{q_1,q_2,\cdots,q_n}C$,即$\vdash D$，再由Godel完全性定理推出$\models D$,即D为永真式。\newline
+
+\noindent 10.$ \left( \neg \left( \neg \left( q\vee r\right)\vee \neg p \right)\vee \neg \neg \left( q\vee r\right) \right)$\newline
+
+\noindent 12.解：
+\begin{align*}
+    1.\quad A\vee (B\vee C)&\vdash A\vee (B\vee C) \\
+    2.\quad A\vee (B\vee C)&\vdash (B\vee C)\vee A\quad 1, i) \\
+    3.\quad A\vee (B\vee C)&\vdash B\vee (C\vee A)\quad 2, ii) \\
+    4.\quad A\vee (B\vee C)&\vdash (C\vee A) \vee B\quad 3, i) \\
+    5.\quad A\vee (B\vee C)&\vdash C\vee (A \vee B)\quad 4, ii) \\
+    6.\quad A\vee (B\vee C)&\vdash (A\vee B) \vee C\quad 5, i)
+\end{align*}
+
+\noindent 14.可满足的
+
+其否定对应的合取范式为$(\neg p\vee q)\wedge(\neg r\vee s)\wedge(\neg s\vee q)\wedge \neg p \wedge r$,令$S=\{\neg p\vee q,\neg r\vee s,\neg s\vee q,\neg p,r\}$,对S应用消解规则如下:
+\begin{align*}
+    &1.\quad S &\\
+    &2.\quad \{\neg r\vee s, \neg s\vee q, r\} \quad &1,\text{关于}\neg p\text{纯文字规则} \\
+    &3.\quad \{s, \neg s\vee q\} \quad &2,\text{关于}\neg r\text{单文字规则}\\
+    &4.\quad \{q\} \quad &3,\text{关于}\neg s\text{单文字规则}\\
+    &5.\quad \{qed\} \quad &4,\text{关于}\neg q\text{纯文字规则}\\
+\end{align*}
+令$\varphi(r)=f$时为真，$\varphi(p)=f,\varphi(q)=\varphi(r)=\varphi(s)=t$时为假。\newline
+
+\noindent 15.永真式
+
+对应的析取范式为$(\neg r\vee \neg s\vee r\vee \neg q\vee p)\wedge (q\vee \neg p\vee s\vee \neg s\vee r\vee \neg q\vee p)$，每个短句都包含互补文字，故为永真式。\newline
+
+\noindent 16.永真式，用真值表\newline
+\noindent 17.可满足，$\varphi(p)=t, \varphi(q)=f$时为真，$\varphi(p)=f, \varphi(q)=t$时为假。\newline
+\noindent 18.永真式，用真值表\newline
+\noindent 19.解
+P'系统可以看做P系统由$\neg(p\supset q)$出发进行的证明
+
+方法一：先证明在P系统下若$\Gamma$不协调，且$\neg A\not\in Th(\Gamma)$,则$\Gamma\cup \{A\}$协调。
+若$\Gamma\cup \{A\}$不协调，则存在B使得$\Gamma,A\vdash B$且$\Gamma,A\vdash \neg B$,则
+\begin{align*}
+  &1.\quad \Gamma,A\vdash B \quad & hyp \\
+  &2.\quad \Gamma,A\vdash \neg B \quad & hyp \\
+  &3.\quad \Gamma,A\vdash \neg A \quad & 1,2,DR\\
+  &4.\quad \Gamma\vdash A\supset \neg A \quad&  3,CP\\
+  &5.\quad \Gamma\vdash \neg A\supset \neg A  \quad & \\
+  &6.\quad \Gamma\vdash \neg A \quad & 4,5,DR_3\\
+\end{align*}这与$\neg A\not\in Th(\Gamma)$矛盾，故$\Gamma\cup \{A\}$协调。因为$\neg(p\supset q)$不为永真式，而P系统的定理都为永真式,故$\neg(p\supset q)\not\in Th(P)$ ,所以$Axiom\cup\{\neg(p\supset q)\}$协调，即P'系统是协调的。
+
+方法二：假设P'系统不协调，则在P系统下存在B使得$\neg(p\supset q)\vdash B$且$\neg(p\supset q)\vdash \neg B$，根据Godel完全性定理，$\neg(p\supset q)\models B$且$\neg(p\supset q)\models \neg B$，明显矛盾，故P'系统协调。\newline
+
+
+\noindent 75.解：
+用结构归纳法证明
+\begin{enumerate}
+  \item 若A为命题变元
+  \begin{enumerate}
+    \item A=m，则$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BA=S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}B$，因为$B=S_{u_1,u_2.\cdots,u_n}^{x_1,x_2,\cdots,x_n}C$且${u_1,u_2,\cdots,u_n}$不在C中出现，故$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}B=C=S_C^mA$
+    \item A为命题变元，且$A=p\neq m$, 则$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BA=S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}p=p=S_C^mA$
+  \end{enumerate}
+  \item A为原子公式，$A=P(t_1,t_2,\cdots,t_k),t_i=f(y_1,y_2,\cdots,y_j),1\leq i\leq k$,则m不在A中出现，所以 $S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BA=A=S_C^mA$
+  \item $A=\neg D$，因为$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BD=S_C^mD$，所以$\neg S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BD=\neg S_C^mD$,即$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BA=S_C^mA$
+  \item $A=D\vee E$，因为$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BD=S_C^mD$，且$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BE=S_C^mE$，则$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BD\vee S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BE=S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_B( D\vee E ) =S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BA=S_C^mD \vee S_C^mE=S_C^m(D \vee E)=S_C^mA$
+  \item $A=\forall{y}D$,则$y\not\in\{u_1,u_2,\cdots,u_n\}$,则B对A中m是自由的,且$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BD=S_C^mD$，，所以$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BA=S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_B\forall{y}D=\forall{y}S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BD=\forall{y}S_C^mD=S_C^m\forall{y}D=S_C^mA$
+\end{enumerate}
+综上，结论成立.\newline
+
+\noindent 76.解：
+  
+  
+
+
+
+\end{document}

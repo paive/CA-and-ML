@@ -3,6 +3,7 @@
 \usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
 \usepackage{titlesec}
 \usepackage{amsmath}
+\usepackage{multirow}
 \usepackage{ulem}
 \newcommand{\li}{\uline{\hspace{0.5em}}}
 \renewcommand{\labelenumi}{\arabic{enumi})}
@@ -12,8 +13,11 @@
 \title{数理逻辑课后题/考题答案}
 \author{作者:杨森}
 \maketitle
+\newpage
 
 \section{课后题}
+\noindent 1.略
+
 \noindent 2.解：
 \begin{enumerate}
   \item =>
@@ -35,6 +39,9 @@
   \end{enumerate}
 \end{enumerate}
 综上，Y为合式公式当且仅当Y有一个生成序列。\newline
+\noindent 3.略(根据公式定义进行证明)
+
+\noindent 4.略
 
 \noindent 5.解:
 用结构归纳法证明
@@ -44,6 +51,9 @@
   \item $A=B\vee C$，因为B，C满足条件，则$(B)\vee (C)$也满足条件
 \end{enumerate}
 综上，若表达式A为合式公式，则最终计数为0.\newline
+\noindent 6.略
+
+\noindent 7.略
 
 \noindent 8.解:
 用公式结构归纳法证明
@@ -77,6 +87,8 @@
     5.\quad A\vee (B\vee C)&\vdash C\vee (A \vee B)\quad 4, ii) \\
     6.\quad A\vee (B\vee C)&\vdash (A\vee B) \vee C\quad 5, i)
 \end{align*}
+
+\noindent 13.暂无
 
 \noindent 14.可满足的
 
@@ -113,6 +125,273 @@ P'系统可以看做P系统由$\neg(p\supset q)$出发进行的证明
 
 方法二：假设P'系统不协调，则在P系统下存在B使得$\neg(p\supset q)\vdash B$且$\neg(p\supset q)\vdash \neg B$，根据Godel完全性定理，$\neg(p\supset q)\models B$且$\neg(p\supset q)\models \neg B$，明显矛盾，故P'系统协调。\newline
 
+\noindent 20.解
+不协调，记公理模式$A\supset B$为AS'
+\begin{align*}
+  &1.\quad \vdash A\vee A\supset A &AS_{1} \\
+  &2.\quad \vdash (A\vee A\supset A)\supset \neg(A\vee A\supset A)&AS' \\
+  &3.\quad \vdash \neg(A\vee A\supset A) &1,2,\bar{MP} \\
+  &4.\quad \vdash B &3,DR \\
+\end{align*}
+故在P系统中增加$A\supset B$做为公理所得系统不协调。\newline
+
+\noindent 21.解:
+
+不存在不含“$\vee$”的定理。用反证法证明：若A为满足条件的公式，易知A中只有一个命题变元，设为p，如果辖域中包含p的“$\neg$”的个数为偶数，令指派$\varphi(p)=f$，否则$\varphi(p)=t$，则$\varphi(A)=f$，而P系统的定理都为永真式，所以P系统中不存在不含“$\vee$”的定理。\newline
+
+\noindent 22.解：
+
+不存在不含“$\neg$”的定理。用反证法证明：若A为满足条件的公式，其中出现的命题变元为$p_1,p_2,\cdots,p_n$，另$\varphi(p_1)=\varphi(p_2)=\cdots=\varphi(p_n)=f$，则$\varphi(A)=f$，而P系统的定理都为永真式，所以P系统中不存在不含“$\neg$”的定理。\newline
+
+\noindent 23.解:
+\begin{align*}
+  &1.\quad \vdash A\vee A\supset A\vee A &Axiom \\
+  &2.\quad \vdash (A\vee A\supset A\vee A) \supset \left(A\vee A\supset \neg(A\vee A)\right) &Axiom \\
+  &3.\quad \vdash A\vee A\supset \neg(A\vee A) &1,2,MP \\
+  &4.\quad \vdash \left(A\vee A\supset \neg(A\vee A)\right)\supset \neg(A\vee A)\vee A &Axiom \\
+  &5.\quad \vdash \neg(A\vee A)\vee A &3,4,MP \\
+  &6.\quad \vdash \neg(A\vee A)\vee A\supset A\vee A &Axiom \\
+  &7.\quad \vdash A\vee A &5,6,MP \\
+  &8.\quad \vdash A &5,7,MP \\
+\end{align*}
+可以看出s的公式皆为定理，故s不协调。\newline
+
+\noindent 24.解:
+
+A是R的定理
+\begin{align*}
+  &1.\quad \vdash A*A &Axiom \\
+  &2.\quad \vdash A*(A*A) &Axiom \\
+  &3.\quad \vdash A &1,2,<A,(B*A),B> \\
+\end{align*}
+
+\noindent 25.解：
+令$\Gamma=\{\neg P\}$(P为命题变元)。
+\begin{enumerate}
+  \item P'是协调的
+  对于P系统，$\Gamma$是可满足的，且存在唯一的指派$\varphi:{P}\rightarrow f$满足$\Gamma$，则$\Gamma\not\models p$，根据完全性定理$\Gamma\not\vdash p$，所以在P'中，命题变元p不是定理，故P'是协调的。
+  \item 利用1)中的指派判断A的真值，若$\varphi(A)=t$，则A是P'的定理。构造过程为P系统下从$\Gamma$出发的证明序列。
+\end{enumerate}
+
+\noindent 26.解:
+设命题变元p在A中不出现。
+\begin{align*}
+  &1.\quad \vdash p\supset S_{A}^p p  &Axiom \\
+  &2.\quad \vdash p\supset A &1 \\
+  &3.\quad \vdash p\supset A\supset S_{p\supset A}^p(p\supset A) &Axiom \\
+  &4.\quad \vdash p\supset A\supset(p\supset A\supset A) &3. \\
+  &5.\quad \vdash p\supset A\supset A &2,4,MP \\
+  &6.\quad \vdash A &2,5,MP \\
+\end{align*}
+所以对任意公式A都可以构造出证明序列，所以P'不协调，但同时是完全的。\newline
+
+\noindent 27.解:
+
+定义$\psi$如下：$$
+\left\{
+  \begin{aligned}
+    &\psi(p)=p\quad\text{若p为命题变元} \\
+    &\psi(\wedge) = \vee \\ 
+    &\psi(\vee)=\wedge \\
+    &\psi(\neg) =\neg \\
+    &\psi(\alpha\beta)=\psi(\alpha)\psi(\beta)
+  \end{aligned}
+\right.
+$$
+易知
+\begin{itemize}
+  \item $A\in L(P)$，则$\psi(A)\in L(Q)$;
+  \item 若$A\in L(Q)$，则$\psi(A)\in L(P)$;
+  \item $\psi(\psi(A))=A$。
+\end{itemize}
+
+首先利用第二归纳法证明必要性：假设A为Q系统的定理，且证明序列为$A_1,A_2,\cdots,A_n(=A)$，下面证明$A_i$为永假式：
+\begin{itemize}
+  \item $A_i\in Axiom$，显然$A_i$为永假式；
+  \item 存在$j,k<i$使得$A_k=\neg A_j\wedge A_i$，根据归纳假设，因为$A_k,A_j$皆为永假式，所以$A_i$为永假式。
+\end{itemize}
+必要性得证。
+
+\noindent 下面分两步进行证明充分性：
+\begin{enumerate}
+  \item 用第二归纳法证明，若A为P系统的定理，则$\psi(A)$为Q系统定理，设A在P系统下的证明序列为$A_1,A_2,\cdots,A_n(=A)$:
+  \begin{enumerate}
+    \item $A_i\in Axiom_P$，显然$A_i\in Axiom_Q$，则$\vdash_Q\psi(A_i)$;
+    \item 存在$j,k<i$，使得$A_k=A_j\supset A_i$即$A_k=\neg A_j\vee A_i$，则根据归纳假设$\vdash \psi(A_j)$且$\vdash \psi(\neg A_j\vee A_i)$即$\vdash \neg\psi(A_j)\wedge \psi(A_i)$，所以$\vdash\psi(A_i)$。
+  \end{enumerate}
+  \item 用结构归纳法证明：若$A\in L(Q)$且A为永假式，则$\psi(A)\in L(P)$且A为永真式，若$A\in L(Q)$为永真式，则$\psi(A)\in L(P)$为永假式。
+  \begin{enumerate}
+    \item $A=p\wedge\neg p$或者$A=\neg p\wedge p$，显然A为Q系统的最简永假式，$\psi(A)\in L(P)$为永真式；
+    \item $A=\neg(p\wedge\neg p)$或者$A=\neg(\neg p\wedge p)$，显然A为Q系统的最简永真式，$\psi(A)\in L(P)$为永假式;
+    \item $A=\neg B$且A为永假式，根据归纳假设，B为永真式，且$\psi(B)\in L(P)$且为永假式，因为$\psi(A)=\psi(\neg B)=\neg\psi(B)$，则$\psi(A)\in L(P)$为永真式；
+    \item $A=\neg B$且A为永真式，根据归纳假设，B为永假式，且$\psi(B)\in L(P)$且为永真式，因为$\psi(A)=\psi(\neg B)=\neg\psi(B)$，则$\psi(A)\in L(P)$为永假式；
+    \item $A=B\wedge C$且A为永假式，则存在以下三种情况：
+    \begin{itemize}
+      \item B为永假式，根据归纳假设$\psi(B)\in L(P)$且为永真式，因为$\psi(A)=\psi(B\wedge C)=\psi(B)\vee \psi(C)$，则$\psi(A)\in L(P)$为永真式；
+      \item C为永假式，证明同上；
+      \item B,C均不为永假式，但对任意指派$\varphi$都有$\varphi(B)\neq \varphi(C)$，又因为$\psi(A)=\psi(B\wedge C)=\psi(B)\vee \psi(C)$，所以$\psi(A)\in L(P)$为永真式；
+    \end{itemize}
+    \item $A=B\wedge C$且A为永真式，则B和C皆为永真式，根据归纳假设，$\psi(B)\in L(P)$且为永假式且$\psi(C)\in L(P)$且为永假式，又因为又因为$\psi(A)=\psi(B\wedge C)=\psi(B)\vee \psi(C)$，故$\psi(A)\in L(P)$为永假式。
+  \end{enumerate}
+\end{enumerate}
+综上，若$A\in L(Q)$且A为永假式，根据充分性第二步证明，则$\psi(A)\in L(P)$且为永真式，即$\models_P\psi(A)$，根据完全性定理有$\vdash_P\psi(A)$，根据充分性证明的第一步有$\vdash_Q \psi(\psi(A))$，即$\vdash_QA$。充分性得证。\newline
+
+\noindent 28.解:
+用公式结构结构归纳法证明：
+\begin{enumerate}
+  \item A为命题变元，易知$V_\varphi(A)=V_\psi(A)$;
+  \item $A=\neg B$，由归纳假设知$V_\varphi(B)=V_\psi(B)$，所以$V_\varphi(A)=\neg V_\varphi(B)=\neg V_\psi(B)=V_\psi(\neg B)=V_\psi(A)$;
+  \item $A=B\vee C$，由归纳假设知$V_\varphi(B)=V_\psi(B)$且$V_\varphi(C)=V_\psi(C)$，所以$V_\varphi(A)=V_\varphi(B\vee C)=V_\varphi(B)\vee V_\varphi(C)=V_\psi(B)\vee V_\psi(C)=V_\psi(B\vee C)=V_\psi(A)$。
+\end{enumerate}
+综上，$V_\varphi(A)=V_\psi(A)$。\newline
+
+\noindent 29.解:不是，参考27题
+
+\noindent 30.解:
+\begin{enumerate}
+  \item \begin{align*}
+    &1. \quad\vdash p\vee p\supset p &AS_1 \\
+    &2. \quad\vdash A\vee A\supset A &1,sub \\
+    &3. \quad\vdash p\supset q\vee p &AS_2 \\
+    &4. \quad\vdash A\supset B\vee A &3,sub \\
+    &5. \quad\vdash p\supset q\supset(r\vee q\supset q\vee r)&AS_3 \\
+    &6. \quad\vdash A\supset B\supset(C\vee A\supset B\vee C)&5,sub \\
+  \end{align*}
+  由2,4,6知P的定理比为p'的定理。下面用第二归纳法证明P'的定理也为P的定理，设A为P'的定理，且证明序列为$A_1,A_2,\cdots,A_n(=A)$，则$\vdash_PA_i$
+  \begin{enumerate}
+    \item $A_i\in Axiom$，显然$\vdash_PA_i$成立；
+    \item 存在$j,k<i$使得$A_k=A_j\supset A_i$，根据归纳假设$\vdash_PA_j$且$\vdash_PA_k$，根据P系统的MP规则知$\vdash_PA_i$成立；
+    \item 存在$j<i$使得$A_i=S_{B_1,B_2,\cdots,B_n}^{p_1,p_2,\cdots,p_n}A_j$，根据归纳假设$\vdash_PA_j$，由P系统的代入规则sub知$\vdash_PA_i$成立。
+  \end{enumerate}
+  所以P系统和P'系统具有相同的定理。
+  \item 若无sub规则，则不能推出$s\vee s\supset s$(不能推出包含除p,q,r之外命题变元的公式)，故sub规则独立；若无MP规则，则不能推出$s\vee\neg s$(不能推出长度小于5的公式)，故MP规则独立。
+\end{enumerate}
+\noindent 31.与30题重复
+\noindent 32.解：
+
+令$AS_4=\neg A\vee A$，$AS_5=A\vee\neg A$。下面证明$AS_1-AS_3$的独立性。
+\begin{enumerate}
+  \item 给每个命题变元以0，1,2三个可能的值，$\neg$和$\vee$的真值表定义如下：
+  \begin{table}[!hbp]
+    \begin{tabular}{c|c}
+      & $\neg$ \\
+      \hline
+      0 & 1 \\
+      1 & 0 \\
+      2 & 2
+    \end{tabular}
+    \hfil
+    \begin{tabular}{c|ccc}
+      $\vee$ & 0 & 1 & 2 \\
+      \hline
+      0 & 0 & 0 & 0 \\
+      1 & 0 & 1 & 2 \\
+      2 & 0 & 2 & 0 \\
+    \end{tabular}    
+  \end{table}
+  
+  $AS_2-AS_5$在此数值解释下恒为0，而$AS_1$不常为0，故$AS_2-AS_5$不能表示出$AS_1$。
+  \item 定义$\neg$和$\vee$的真值表定义如下：
+  \begin{table}[!hbp]
+    \begin{tabular}{c|c}
+      & $\neg$ \\
+      \hline
+      0 & 2 \\
+      1 & 1 \\
+      2 & 0
+    \end{tabular}
+    \hfil
+    \begin{tabular}{c|ccc}
+      $\vee$ & 0 & 1 & 2 \\
+      \hline
+      0 & 0 & 0 & 0 \\
+      1 & 0 & 1 & 2 \\
+      2 & 0 & 2 & 2 \\
+    \end{tabular}    
+  \end{table}
+  
+  $AS_1,AS_3-AS_5$在此数值解释下永不为2，而$AS_2$可能为2，故$AS_1,AS_3-AS_5$不能表示出$AS_2$。
+  \item 定义$\neg$和$\vee$的真值表定义如下：
+  \begin{table}[!hbp]
+    \begin{tabular}{c|c}
+      & $\neg$ \\
+      \hline
+      0 & 1 \\
+      1 & 2 \\
+      2 & 0
+    \end{tabular}
+    \hfil
+    \begin{tabular}{c|ccc}
+      $\vee$ & 0 & 1 & 2 \\
+      \hline
+      0 & 0 & 0 & 0 \\
+      1 & 0 & 1 & 0 \\
+      2 & 0 & 0 & 2 \\
+    \end{tabular}    
+  \end{table}
+  
+  $AS_1,AS_2,AS_4,AS_5$在此数值解释下恒为0，$AS_3$不恒为0，故$AS_1,AS_2,AS_4,AS_5$不能表示出$AS_3$。
+  
+  综上，结论成立。
+\end{enumerate}
+
+\noindent 33.解:
+
+构造如下的数值解释：
+\begin{table}[!hbp]
+  \begin{tabular}{c|c}
+    & $\neg$ \\
+    \hline
+    0 & 1 \\
+    1 & 0 \\
+  \end{tabular}
+  \hfil
+  \begin{tabular}{c|cc}
+    $\vee$ & 0 & 1  \\
+    \hline
+    0 & 1 & 1  \\
+    1 & 0 & 1  \\
+  \end{tabular}    
+\end{table}
+
+在此数值解释下，$AS_1-AS_3$恒为1，$P\supset \neg\neg P$不恒为1，且两个恒为1的公式经MP规则必得到一个恒为1的公式，故不能从$P^*$系统导出$P\supset \neg\neg P$。
+
+\noindent 34.解:
+
+设p,q为命题变元，A为由$\{\neg,\equiv\},p,q$构成的公式。用公式结构归纳法证明若$A_i$不是永真式或永假式，则$A_i$的真值表中取值为真的个数与取值为假的个数相等。
+\begin{enumerate}
+  \item $A=p$或者$A=q$，显然成立；
+  \item $A=\neg B$，显然成立；
+  \item $A=B\equiv C$，若$\varphi(B)=\varphi(C)$或$\varphi(B)\neq\varphi(C)$时，则$A$为永真式或永假式，当$\varphi(B),\varphi(C)$不完全一样或完全相反时($\varphi$为任意指派)，通过枚举可知结论同样成立。
+\end{enumerate}
+所以，A为永真式或者永假式或A的真值表中t的个数与f的个数相等，而$v$的真值表中t的个数与f的个数不等，因此$\{\neg,\equiv\}$不能表示出$\vee$，则$\{\neg,\equiv\}$不完全。\newline
+
+\noindent 35.解:
+
+先证明对于每个n元真值函数h:$\{t,f\}^n\rightarrow\{t,f\}$，存在一个合取范式A以及n个命题变元:$p_1,p_2,\cdots,p_n$，使得$h=[\lambda p_1,\cdots\lambda p_nA]$：
+\begin{enumerate}
+  \item 若h恒取t，则令$A=p_1\vee\neg p_1$;
+  \item 若h不恒为t，对P系统中的每个指派$\varphi$,令：
+  \begin{align*}
+    A^\varphi&=p_1^\varphi\vee p_2^\varphi\vee\cdots\vee p_n^\varphi \\
+    p_i^\varphi&=\left\{
+      \begin{aligned}
+        &\neg p_i &\text{若}\varphi(p_i)=t \\
+        &p_i &\text{否则}
+      \end{aligned}
+    \right.
+  \end{align*}
+  则$\varphi(A^\varphi)=\varphi(p_1^\varphi)\vee\cdots\vee\varphi(p_n^\varphi)=f$，因此$[\lambda p_1,\cdots\lambda p_nA](x_1,x_2,\cdots,x_n)=f$当且仅当$x_1=p_1^\varphi,\cdots,x_n=p_n^\varphi$。所以$A=\wedge_{h(\varphi(p_1),\varphi(p_2),\cdots,\varphi(p_n))=f}A^\varphi$满足要求。
+\end{enumerate}
+对于公式B，都存在一个n元真值函数$h=[\lambda p_1,\cdots\lambda p_mB]$，$p_1,p_2\cdots,p_m$为B中出现的所有命题变元，则由上述证明可知，存在一个合取范式A使得$[\lambda p_1,\cdots\lambda p_mA]=h=[\lambda p_1,\cdots\lambda p_mB]$，故$A\Leftrightarrow B$，即每个公式都有合取范式。\newline
+
+\noindent 36.解:
+$\{\vee,\wedge,\supset,\equiv\}$不是完全集
+
+下面用公式结构归纳法证明，由命题变元p和$\{\vee,\wedge,\supset,\equiv\}$构成的公式没有永假式，也不能有$\{\vee,\wedge,\supset,\equiv\}$定义出$\neg$：
+\begin{enumerate}
+  \item 对于命题变元P既不是永假式，其真值表也不具备$\neg$的形式；
+\end{enumerate}
 
 \noindent 75.解：
 用结构归纳法证明

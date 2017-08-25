@@ -78,6 +78,8 @@
 
 \noindent 10.$ \left( \neg \left( \neg \left( q\vee r\right)\vee \neg p \right)\vee \neg \neg \left( q\vee r\right) \right)$\newline
 
+\noindent 11.暂无
+
 \noindent 12.解：
 \begin{align*}
     1.\quad A\vee (B\vee C)&\vdash A\vee (B\vee C) \\
@@ -112,7 +114,7 @@
 \noindent 19.解
 P'系统可以看做P系统由$\neg(p\supset q)$出发进行的证明
 
-方法一：先证明在P系统下若$\Gamma$不协调，且$\neg A\not\in Th(\Gamma)$,则$\Gamma\cup \{A\}$协调。
+方法一：先证明在P系统下若$\Gamma$协调，且$\neg A\not\in Th(\Gamma)$,则$\Gamma\cup \{A\}$协调。
 若$\Gamma\cup \{A\}$不协调，则存在B使得$\Gamma,A\vdash B$且$\Gamma,A\vdash \neg B$,则
 \begin{align*}
   &1.\quad \Gamma,A\vdash B \quad & hyp \\
@@ -390,8 +392,94 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
 
 下面用公式结构归纳法证明，由命题变元p和$\{\vee,\wedge,\supset,\equiv\}$构成的公式没有永假式，也不能有$\{\vee,\wedge,\supset,\equiv\}$定义出$\neg$：
 \begin{enumerate}
-  \item 对于命题变元P既不是永假式，其真值表也不具备$\neg$的形式；
+  \item A为命题变元p，既不是永假式，其真值表也不具备$\neg$的形式；
+  \item $A=B\equiv C$或$A=B\supset C$或$A=B\vee C$或$A=B\wedge C$，由归纳假设知B和C的真值表具有以下两种形式：
+  \begin{table}[!hbp]
+    \begin{tabular}{c|c}
+      p &  \\
+      \hline
+      0 & 0 \\
+      1 & 1 \\
+    \end{tabular}
+    \hfil
+    \begin{tabular}{c|c}
+      p &  \\
+      \hline
+      0 & 1  \\
+      1 & 1  \\
+    \end{tabular}    
+  \end{table}
 \end{enumerate}
+  无论$A=B\equiv C$或$A=B\supset C$或$A=B\vee C$或$A=B\wedge C$都不能使A为永假式或者具备与$\neg$相同的真值表，所以$\{\vee,\wedge,\supset,\equiv\}$表达不出$\neg$，即不完全。\newline
+  
+\noindent 37.解:
+
+首先用归纳法证明：若A为仅由$\equiv$构成的合式公式(且其中的命题变元为$p_1,p_2,\cdots,p_n$)，则任意改变$p_1,p_2,\cdots,p_n$的出现顺序所形成的新公式B与A等价，用$^\#A$表示A中命题变元和$\equiv$出现的次数，则$^\#A=2i+1(i=0,1,\cdots)$，
+\begin{enumerate}
+    \item i=0,1，显然成立;
+    \item i=k(k>1)，$A_k=A_{k-1}\equiv P_k$，设$A_{k-1}=B\equiv C$，则$A_k=B\equiv C\equiv P_k$，显然$A_k$与$C\equiv P_k \equiv B$、$P_k \equiv B \equiv C$、$B \equiv P_k  \equiv C$等价
+\end{enumerate}
+故仅由$\equiv$构成的命题合式公式A(且其中的命题变元为$p_1,p_2,\cdots,p_n$)与下式等价:
+\begin{equation*}
+    \underbrace{(p_1\equiv p_1\equiv \cdots\equiv p_1)}_{l_1}\equiv\underbrace{(p_2\equiv p_3\equiv \cdots\equiv p_2)}_{l_2}\equiv\cdots\equiv\underbrace{(p_n\equiv p_n\equiv \cdots\equiv p_n)}_{l_n}
+    \end{equation*}
+其中$l_i$表示$p_i$在A中出现的次数，易知若$l_i$为偶数，则该项对应与t，否则为$p_i$。所以结论成立。\newline
+  
+\noindent 38.略
+
+\noindent 39.参考37
+
+\noindent 40.解：
+
+易知由$\wedge,\not\equiv,t,f$构成的公式只能为永真式或者永假式
+
+用结构归纳法证明：
+\begin{enumerate}
+  \item A为t显然成立；
+  \item $A=B\wedge C$，
+  \begin{itemize}
+    \item 若A能变换到1，则B和C都能变换到1，根据归纳假设，B和C都是永真式，所以A也为永真式；
+    \item 若A为永真式，则B，C都是永真式，根据归纳假设，B和C都能变换到1，所以A也能变换到1；
+  \end{itemize}    
+  \item $A=B\not\equiv C$
+  \begin{enumerate}
+    \item 若A能变换到1，则B能变换到0、C能变换到1，或者B能变换到1、C能变换到0，根据归纳假设，B、C中有一个为永真式，另一个不为永真式，故A为永真式。
+    \item 若A为永真式，根据归纳假设，B和C中只能有一个永真式，所以A能变换到1(根据归纳假设，B和C中的永假式只能变换到0)
+  \end{enumerate}
+  
+\end{enumerate}
+综上，结论得证。\newline
+
+\noindent 41.解：
+
+设C(A)中所有合适的公式的析取为B，因为C(A)的所有元素均为合取项，所以B是析取范式。
+根据定理2.6.7，$\models_{\varphi}A$当且仅当有$D\in C(A)$使得$\models_\varphi D$成立。
+则对任意指派$\varphi$，若$\models_{\varphi}A$，则存在$D\in C(A)$满足$\models_\varphi D$，又因为B为所有C(A)元素的析取，所以$\models_\varphi B$，必要性成立；
+
+对任意指派$\varphi$，若$\models_{\varphi}B$，则必然存在一个B的合取项D满足$\models_\varphi D$，而$D\in C(A)$，所以$\models_{\varphi}A$,充分性成立。\newline
+
+\noindent 42.解：
+
+|表示与非，$p\supset q=\neg p\vee q=\neg(p\wedge\neg q)$，所以用|表示为p|(q|q)。\newline
+
+\noindent 43.解：
+
+| 不是可结合的，因为$f|f|t\not\equiv f|(f|t)$为永真式。\newline
+
+\noindent 44.解：
+
+设A是Q的定理，则A存在证明序列$A_1,A_2,\cdots,A_m(=A)$。则$A_i$为公理，或对$A_j$应用规则1所得，或对$A_k,A_j$应用规则2所得。
+
+假设第一次应用规则2时，令$A_j=D,A_k=E$,则D，E皆由规则1得出或为公理。
+
+令$D=D_1\mid\left( D_1\mid D_2\right) \mid \left( \left( D_1\mid\left( D_2\mid D_1\right) \right) \mid\left( D_3\mid D_4\mid\left( D_1\mid D_3\mid\left( D_1\mid D_3\right) \right) \right) \right)$
+
+同时E也具备如上的形式，因为能在D和E上应用规则2，所以$D_1\mid(D_1\mid D_2)$=$D_1\mid(D_2\mid D_1)$,则$D_2=D_1$，且$D_3\mid D_4\mid\left( D_1\mid D_3\mid\left( D_1\mid D_3\right) \right) \right)=D_1$，显然不成立。即规则2无法应用与A的证明序列中，因此A的定理的长度必然不小于公理的长度，所以Q必然为协调的。\newline
+
+\noindent 45.解：
+
+
+
 
 \noindent 75.解：
 用结构归纳法证明

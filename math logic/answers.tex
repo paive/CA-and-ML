@@ -3,6 +3,7 @@
 \usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
 \usepackage{titlesec}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{multirow}
 \usepackage{ulem}
 \newcommand{\li}{\uline{\hspace{0.5em}}}
@@ -24,7 +25,7 @@
   利用结构归纳法证明
   \begin{enumerate}
     \item Y是命题变元，此时Y的生成序列即为自身；
-    \item $Y=\neg A$，A的生成序列为$A_1,A_2,\cdots,A_m(=A)$,则Y的生成序列为$A_1,A_2,\cdots,A_m,Y$;
+    \item $Y=\sim A$，A的生成序列为$A_1,A_2,\cdots,A_m(=A)$,则Y的生成序列为$A_1,A_2,\cdots,A_m,Y$;
     \item $Y=B\vee C$，B的生成序列为$B_1,B_2,\cdots,B_m(=B)$，C的生成序列为$C_1,C_2,\cdots,C_n(=C)$，则Y的生成序列为$B_1,B_2,\cdots,B_m,C_1,C_2,\cdots,C_n，Y=(B\vee C)$
   \end{enumerate}
   
@@ -34,7 +35,7 @@
   假设Y的生成序列为$Y_1,Y_2,\cdots,Y_m(=Y)$，证明$Y_i(1\leq i\leq m)$是合式公式
   \begin{enumerate}
     \item $Y_i$是命题变元，则$Y_i$是合适公式；
-    \item $Y_i=\neg Y_j(j<i)$，因为$Y_j$是合式公式，故$Y_i$也是合式公式；
+    \item $Y_i=\sim Y_j(j<i)$，因为$Y_j$是合式公式，故$Y_i$也是合式公式；
     \item $Y_i=Y_j \vee Y_k(j,k<i)$，因为$Y_j$,$Y_k$是合式公式，故$Y_i$也是合式公式。
   \end{enumerate}
 \end{enumerate}
@@ -47,7 +48,7 @@
 用结构归纳法证明
 \begin{enumerate}
   \item A为命题变元p，显然结论成立；
-  \item $A=\neg B$，因为B满足条件，则$\neg (B)$即A也满足条件；
+  \item $A=\sim B$，因为B满足条件，则$\sim (B)$即A也满足条件；
   \item $A=B\vee C$，因为B，C满足条件，则$(B)\vee (C)$也满足条件
 \end{enumerate}
 综上，若表达式A为合式公式，则最终计数为0.\newline
@@ -63,7 +64,7 @@
     \item $p\in\{p_1,p_2,\cdots,p_n\}$且$p=p_i$，则$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}A=B_i$，即$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}A$为合式公式;
     \item $p\not\in\{p_1,p_2,\cdots,p_n\}$,则$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}A=A$;
   \end{enumerate}
-  \item $A=\neg B$,则$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}B$为合式公式，所以$\neg S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}B=S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}\neg B$为合式公式，即$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}A$为合式公式；
+  \item $A=\sim B$,则$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}B$为合式公式，所以$\sim S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}B=S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}\sim B$为合式公式，即$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}A$为合式公式；
   \item $A=B\vee C$,则$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}B$,$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}C$为合式公式，所以$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}B \vee S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}C=S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}(B\vee C)$为合式公式，即$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}A$为合式公式；
 \end{enumerate}
 综上，若A是合式公式，则$S^{p_1,p_2,\cdots,p_n}_{B_1,B_2,\cdots,B_n}A$为合式公式。\newline
@@ -76,7 +77,7 @@
 \end{enumerate}
 综上$\vdash S^{p_1,p_2,\cdots,p_n}_{q_1,q_2,\cdots,q_n}C$,即$\vdash D$，再由Godel完全性定理推出$\models D$,即D为永真式。\newline
 
-\noindent 10.$ \left( \neg \left( \neg \left( q\vee r\right)\vee \neg p \right)\vee \neg \neg \left( q\vee r\right) \right)$\newline
+\noindent 10.$ \left( \sim \left( \sim \left( q\vee r\right)\vee \sim p \right)\vee \sim \sim \left( q\vee r\right) \right)$\newline
 
 \noindent 11.暂无
 
@@ -94,65 +95,65 @@
 
 \noindent 14.可满足的
 
-其否定对应的合取范式为$(\neg p\vee q)\wedge(\neg r\vee s)\wedge(\neg s\vee q)\wedge \neg p \wedge r$,令$S=\{\neg p\vee q,\neg r\vee s,\neg s\vee q,\neg p,r\}$,对S应用消解规则如下:
+其否定对应的合取范式为$(\sim p\vee q)\wedge(\sim r\vee s)\wedge(\sim s\vee q)\wedge \sim p \wedge r$,令$S=\{\sim p\vee q,\sim r\vee s,\sim s\vee q,\sim p,r\}$,对S应用消解规则如下:
 \begin{align*}
     &1.\quad S &\\
-    &2.\quad \{\neg r\vee s, \neg s\vee q, r\} \quad &1,\text{关于}\neg p\text{纯文字规则} \\
-    &3.\quad \{s, \neg s\vee q\} \quad &2,\text{关于}\neg r\text{单文字规则}\\
-    &4.\quad \{q\} \quad &3,\text{关于}\neg s\text{单文字规则}\\
-    &5.\quad \{qed\} \quad &4,\text{关于}\neg q\text{纯文字规则}\\
+    &2.\quad \{\sim r\vee s, \sim s\vee q, r\} \quad &1,\text{关于}\sim p\text{纯文字规则} \\
+    &3.\quad \{s, \sim s\vee q\} \quad &2,\text{关于}\sim r\text{单文字规则}\\
+    &4.\quad \{q\} \quad &3,\text{关于}\sim s\text{单文字规则}\\
+    &5.\quad \{qed\} \quad &4,\text{关于}\sim q\text{纯文字规则}\\
 \end{align*}
 令$\varphi(r)=f$时为真，$\varphi(p)=f,\varphi(q)=\varphi(r)=\varphi(s)=t$时为假。\newline
 
 \noindent 15.永真式
 
-对应的析取范式为$(\neg r\vee \neg s\vee r\vee \neg q\vee p)\wedge (q\vee \neg p\vee s\vee \neg s\vee r\vee \neg q\vee p)$，每个短句都包含互补文字，故为永真式。\newline
+对应的析取范式为$(\sim r\vee \sim s\vee r\vee \sim q\vee p)\wedge (q\vee \sim p\vee s\vee \sim s\vee r\vee \sim q\vee p)$，每个短句都包含互补文字，故为永真式。\newline
 
 \noindent 16.永真式，用真值表\newline
 \noindent 17.可满足，$\varphi(p)=t, \varphi(q)=f$时为真，$\varphi(p)=f, \varphi(q)=t$时为假。\newline
 \noindent 18.永真式，用真值表\newline
 \noindent 19.解
-P'系统可以看做P系统由$\neg(p\supset q)$出发进行的证明
+P'系统可以看做P系统由$\sim(p\supset q)$出发进行的证明
 
-方法一：先证明在P系统下若$\Gamma$协调，且$\neg A\not\in Th(\Gamma)$,则$\Gamma\cup \{A\}$协调。
-若$\Gamma\cup \{A\}$不协调，则存在B使得$\Gamma,A\vdash B$且$\Gamma,A\vdash \neg B$,则
+方法一：先证明在P系统下若$\Gamma$协调，且$\sim A\not\in Th(\Gamma)$,则$\Gamma\cup \{A\}$协调。
+若$\Gamma\cup \{A\}$不协调，则存在B使得$\Gamma,A\vdash B$且$\Gamma,A\vdash \sim B$,则
 \begin{align*}
   &1.\quad \Gamma,A\vdash B \quad & hyp \\
-  &2.\quad \Gamma,A\vdash \neg B \quad & hyp \\
-  &3.\quad \Gamma,A\vdash \neg A \quad & 1,2,DR\\
-  &4.\quad \Gamma\vdash A\supset \neg A \quad&  3,CP\\
-  &5.\quad \Gamma\vdash \neg A\supset \neg A  \quad & \\
-  &6.\quad \Gamma\vdash \neg A \quad & 4,5,DR_3\\
-\end{align*}这与$\neg A\not\in Th(\Gamma)$矛盾，故$\Gamma\cup \{A\}$协调。因为$\neg(p\supset q)$不为永真式，而P系统的定理都为永真式,故$\neg(p\supset q)\not\in Th(P)$ ,所以$Axiom\cup\{\neg(p\supset q)\}$协调，即P'系统是协调的。
+  &2.\quad \Gamma,A\vdash \sim B \quad & hyp \\
+  &3.\quad \Gamma,A\vdash \sim A \quad & 1,2,DR\\
+  &4.\quad \Gamma\vdash A\supset \sim A \quad&  3,CP\\
+  &5.\quad \Gamma\vdash \sim A\supset \sim A  \quad & \\
+  &6.\quad \Gamma\vdash \sim A \quad & 4,5,DR_3\\
+\end{align*}这与$\sim A\not\in Th(\Gamma)$矛盾，故$\Gamma\cup \{A\}$协调。因为$\sim(p\supset q)$不为永真式，而P系统的定理都为永真式,故$\sim(p\supset q)\not\in Th(P)$ ,所以$Axiom\cup\{\sim(p\supset q)\}$协调，即P'系统是协调的。
 
-方法二：假设P'系统不协调，则在P系统下存在B使得$\neg(p\supset q)\vdash B$且$\neg(p\supset q)\vdash \neg B$，根据Godel完全性定理，$\neg(p\supset q)\models B$且$\neg(p\supset q)\models \neg B$，明显矛盾，故P'系统协调。\newline
+方法二：假设P'系统不协调，则在P系统下存在B使得$\sim(p\supset q)\vdash B$且$\sim(p\supset q)\vdash \sim B$，根据Godel完全性定理，$\sim(p\supset q)\models B$且$\sim(p\supset q)\models \sim B$，明显矛盾，故P'系统协调。\newline
 
 \noindent 20.解
 不协调，记公理模式$A\supset B$为AS'
 \begin{align*}
   &1.\quad \vdash A\vee A\supset A &AS_{1} \\
-  &2.\quad \vdash (A\vee A\supset A)\supset \neg(A\vee A\supset A)&AS' \\
-  &3.\quad \vdash \neg(A\vee A\supset A) &1,2,\bar{MP} \\
+  &2.\quad \vdash (A\vee A\supset A)\supset \sim(A\vee A\supset A)&AS' \\
+  &3.\quad \vdash \sim(A\vee A\supset A) &1,2,\bar{MP} \\
   &4.\quad \vdash B &3,DR \\
 \end{align*}
 故在P系统中增加$A\supset B$做为公理所得系统不协调。\newline
 
 \noindent 21.解:
 
-不存在不含“$\vee$”的定理。用反证法证明：若A为满足条件的公式，易知A中只有一个命题变元，设为p，如果辖域中包含p的“$\neg$”的个数为偶数，令指派$\varphi(p)=f$，否则$\varphi(p)=t$，则$\varphi(A)=f$，而P系统的定理都为永真式，所以P系统中不存在不含“$\vee$”的定理。\newline
+不存在不含“$\vee$”的定理。用反证法证明：若A为满足条件的公式，易知A中只有一个命题变元，设为p，如果辖域中包含p的“$\sim$”的个数为偶数，令指派$\varphi(p)=f$，否则$\varphi(p)=t$，则$\varphi(A)=f$，而P系统的定理都为永真式，所以P系统中不存在不含“$\vee$”的定理。\newline
 
 \noindent 22.解：
 
-不存在不含“$\neg$”的定理。用反证法证明：若A为满足条件的公式，其中出现的命题变元为$p_1,p_2,\cdots,p_n$，另$\varphi(p_1)=\varphi(p_2)=\cdots=\varphi(p_n)=f$，则$\varphi(A)=f$，而P系统的定理都为永真式，所以P系统中不存在不含“$\neg$”的定理。\newline
+不存在不含“$\sim$”的定理。用反证法证明：若A为满足条件的公式，其中出现的命题变元为$p_1,p_2,\cdots,p_n$，另$\varphi(p_1)=\varphi(p_2)=\cdots=\varphi(p_n)=f$，则$\varphi(A)=f$，而P系统的定理都为永真式，所以P系统中不存在不含“$\sim$”的定理。\newline
 
 \noindent 23.解:
 \begin{align*}
   &1.\quad \vdash A\vee A\supset A\vee A &Axiom \\
-  &2.\quad \vdash (A\vee A\supset A\vee A) \supset \left(A\vee A\supset \neg(A\vee A)\right) &Axiom \\
-  &3.\quad \vdash A\vee A\supset \neg(A\vee A) &1,2,MP \\
-  &4.\quad \vdash \left(A\vee A\supset \neg(A\vee A)\right)\supset \neg(A\vee A)\vee A &Axiom \\
-  &5.\quad \vdash \neg(A\vee A)\vee A &3,4,MP \\
-  &6.\quad \vdash \neg(A\vee A)\vee A\supset A\vee A &Axiom \\
+  &2.\quad \vdash (A\vee A\supset A\vee A) \supset \left(A\vee A\supset \sim(A\vee A)\right) &Axiom \\
+  &3.\quad \vdash A\vee A\supset \sim(A\vee A) &1,2,MP \\
+  &4.\quad \vdash \left(A\vee A\supset \sim(A\vee A)\right)\supset \sim(A\vee A)\vee A &Axiom \\
+  &5.\quad \vdash \sim(A\vee A)\vee A &3,4,MP \\
+  &6.\quad \vdash \sim(A\vee A)\vee A\supset A\vee A &Axiom \\
   &7.\quad \vdash A\vee A &5,6,MP \\
   &8.\quad \vdash A &5,7,MP \\
 \end{align*}
@@ -168,7 +169,7 @@ A是R的定理
 \end{align*}
 
 \noindent 25.解：
-令$\Gamma=\{\neg P\}$(P为命题变元)。
+令$\Gamma=\{\sim P\}$(P为命题变元)。
 \begin{enumerate}
   \item P'是协调的
   对于P系统，$\Gamma$是可满足的，且存在唯一的指派$\varphi:{P}\rightarrow f$满足$\Gamma$，则$\Gamma\not\models p$，根据完全性定理$\Gamma\not\vdash p$，所以在P'中，命题变元p不是定理，故P'是协调的。
@@ -195,7 +196,7 @@ A是R的定理
     &\psi(p)=p\quad\text{若p为命题变元} \\
     &\psi(\wedge) = \vee \\ 
     &\psi(\vee)=\wedge \\
-    &\psi(\neg) =\neg \\
+    &\psi(\sim) =\sim \\
     &\psi(\alpha\beta)=\psi(\alpha)\psi(\beta)
   \end{aligned}
 \right.
@@ -210,39 +211,29 @@ $$
 首先利用第二归纳法证明必要性：假设A为Q系统的定理，且证明序列为$A_1,A_2,\cdots,A_n(=A)$，下面证明$A_i$为永假式：
 \begin{itemize}
   \item $A_i\in Axiom$，显然$A_i$为永假式；
-  \item 存在$j,k<i$使得$A_k=\neg A_j\wedge A_i$，根据归纳假设，因为$A_k,A_j$皆为永假式，所以$A_i$为永假式。
+  \item 存在$j,k<i$使得$A_k=\sim A_j\wedge A_i$，根据归纳假设，因为$A_k,A_j$皆为永假式，所以$A_i$为永假式。
 \end{itemize}
 必要性得证。
 
 \noindent 下面分两步进行证明充分性：
 \begin{enumerate}
-  \item 用第二归纳法证明，若A为P系统的定理，则$\psi(A)$为Q系统定理，设A在P系统下的证明序列为$A_1,A_2,\cdots,A_n(=A)$:
+  \item 用第二归纳法证明：若A为P系统的定理，即$\vdash_P A$，则$\vdash_{Q}\psi(A)$，设A在P系统下的证明序列为$A_1,A_2,\cdots,A_n(=A)$
   \begin{enumerate}
-    \item $A_i\in Axiom_P$，显然$A_i\in Axiom_Q$，则$\vdash_Q\psi(A_i)$;
-    \item 存在$j,k<i$，使得$A_k=A_j\supset A_i$即$A_k=\neg A_j\vee A_i$，则根据归纳假设$\vdash \psi(A_j)$且$\vdash \psi(\neg A_j\vee A_i)$即$\vdash \neg\psi(A_j)\wedge \psi(A_i)$，所以$\vdash\psi(A_i)$。
+    \item A为P系统的公理，易知$\psi(A)$为Q的公理，$\vdash_{Q}\psi(A)$成立
+    \item 存在$j,k<i$使得$A_k=A_j\supset A_i$，则$\vdash_Q \psi(A_k)$即$\vdash_Q\sim \psi(A_j)\wedge\psi(A_i)$且$\vdash_Q \psi(A_j)$,根据Q系统的规则，可知$\vdash\psi(A_i)$成立
   \end{enumerate}
-  \item 用结构归纳法证明：若$A\in L(Q)$且A为永假式，则$\psi(A)\in L(P)$且A为永真式，若$A\in L(Q)$为永真式，则$\psi(A)\in L(P)$为永假式。
-  \begin{enumerate}
-    \item $A=p\wedge\neg p$或者$A=\neg p\wedge p$，显然A为Q系统的最简永假式，$\psi(A)\in L(P)$为永真式；
-    \item $A=\neg(p\wedge\neg p)$或者$A=\neg(\neg p\wedge p)$，显然A为Q系统的最简永真式，$\psi(A)\in L(P)$为永假式;
-    \item $A=\neg B$且A为永假式，根据归纳假设，B为永真式，且$\psi(B)\in L(P)$且为永假式，因为$\psi(A)=\psi(\neg B)=\neg\psi(B)$，则$\psi(A)\in L(P)$为永真式；
-    \item $A=\neg B$且A为永真式，根据归纳假设，B为永假式，且$\psi(B)\in L(P)$且为永真式，因为$\psi(A)=\psi(\neg B)=\neg\psi(B)$，则$\psi(A)\in L(P)$为永假式；
-    \item $A=B\wedge C$且A为永假式，则存在以下三种情况：
-    \begin{itemize}
-      \item B为永假式，根据归纳假设$\psi(B)\in L(P)$且为永真式，因为$\psi(A)=\psi(B\wedge C)=\psi(B)\vee \psi(C)$，则$\psi(A)\in L(P)$为永真式；
-      \item C为永假式，证明同上；
-      \item B,C均不为永假式，但对任意指派$\varphi$都有$\varphi(B)\neq \varphi(C)$，又因为$\psi(A)=\psi(B\wedge C)=\psi(B)\vee \psi(C)$，所以$\psi(A)\in L(P)$为永真式；
-    \end{itemize}
-    \item $A=B\wedge C$且A为永真式，则B和C皆为永真式，根据归纳假设，$\psi(B)\in L(P)$且为永假式且$\psi(C)\in L(P)$且为永假式，又因为又因为$\psi(A)=\psi(B\wedge C)=\psi(B)\vee \psi(C)$，故$\psi(A)\in L(P)$为永假式。
-  \end{enumerate}
+  \item 证明若$A\equiv B$，则$\psi(A)\equiv\psi(B)$
+  
+  若$A\equiv B$，则$\vdash_P A\equiv B$，由第一步知$\vdash_Q \psi(A\equiv B)$，即$\vdash_Q \psi(A)\equiv \sim \psi(B)$，所以$\psi(A)\equiv \sim \psi(B)$为永假式，$\psi(A)\equiv \psi(B)$为永真式
 \end{enumerate}
-综上，若$A\in L(Q)$且A为永假式，根据充分性第二步证明，则$\psi(A)\in L(P)$且为永真式，即$\models_P\psi(A)$，根据完全性定理有$\vdash_P\psi(A)$，根据充分性证明的第一步有$\vdash_Q \psi(\psi(A))$，即$\vdash_QA$。充分性得证。\newline
+
+综上，若$A\in L(Q)$且A为永假式，则$A\equiv p\wedge\sim p$，根据充分性第二步证明，则$\psi(A)\equiv \psi(p\wedge\sim p)$为永真式，则$\models_P\psi(A)$，根据完全性定理有$\vdash_P\psi(A)$，根据充分性证明的第一步有$\vdash_Q \psi(\psi(A))$，即$\vdash_QA$。充分性得证。\newline
 
 \noindent 28.解:
 用公式结构结构归纳法证明：
 \begin{enumerate}
   \item A为命题变元，易知$V_\varphi(A)=V_\psi(A)$;
-  \item $A=\neg B$，由归纳假设知$V_\varphi(B)=V_\psi(B)$，所以$V_\varphi(A)=\neg V_\varphi(B)=\neg V_\psi(B)=V_\psi(\neg B)=V_\psi(A)$;
+  \item $A=\sim B$，由归纳假设知$V_\varphi(B)=V_\psi(B)$，所以$V_\varphi(A)=\sim V_\varphi(B)=\sim V_\psi(B)=V_\psi(\sim B)=V_\psi(A)$;
   \item $A=B\vee C$，由归纳假设知$V_\varphi(B)=V_\psi(B)$且$V_\varphi(C)=V_\psi(C)$，所以$V_\varphi(A)=V_\varphi(B\vee C)=V_\varphi(B)\vee V_\varphi(C)=V_\psi(B)\vee V_\psi(C)=V_\psi(B\vee C)=V_\psi(A)$。
 \end{enumerate}
 综上，$V_\varphi(A)=V_\psi(A)$。\newline
@@ -266,17 +257,17 @@ $$
     \item 存在$j<i$使得$A_i=S_{B_1,B_2,\cdots,B_n}^{p_1,p_2,\cdots,p_n}A_j$，根据归纳假设$\vdash_PA_j$，由P系统的代入规则sub知$\vdash_PA_i$成立。
   \end{enumerate}
   所以P系统和P'系统具有相同的定理。
-  \item 若无sub规则，则不能推出$s\vee s\supset s$(不能推出包含除p,q,r之外命题变元的公式)，故sub规则独立；若无MP规则，则不能推出$s\vee\neg s$(不能推出长度小于5的公式)，故MP规则独立。
+  \item 若无sub规则，则不能推出$s\vee s\supset s$(不能推出包含除p,q,r之外命题变元的公式)，故sub规则独立；若无MP规则，则不能推出$s\vee\sim s$(不能推出长度小于5的公式)，故MP规则独立。
 \end{enumerate}
 \noindent 31.与30题重复
 \noindent 32.解：
 
-令$AS_4=\neg A\vee A$，$AS_5=A\vee\neg A$。下面证明$AS_1-AS_3$的独立性。
+令$AS_4=\sim A\vee A$，$AS_5=A\vee\sim A$。下面证明$AS_1-AS_3$的独立性。
 \begin{enumerate}
-  \item 给每个命题变元以0，1,2三个可能的值，$\neg$和$\vee$的真值表定义如下：
+  \item 给每个命题变元以0，1,2三个可能的值，$\sim$和$\vee$的真值表定义如下：
   \begin{table}[!hbp]
     \begin{tabular}{c|c}
-      & $\neg$ \\
+      & $\sim$ \\
       \hline
       0 & 1 \\
       1 & 0 \\
@@ -293,10 +284,10 @@ $$
   \end{table}
   
   $AS_2-AS_5$在此数值解释下恒为0，而$AS_1$不常为0，故$AS_2-AS_5$不能表示出$AS_1$。
-  \item 定义$\neg$和$\vee$的真值表定义如下：
+  \item 定义$\sim$和$\vee$的真值表定义如下：
   \begin{table}[!hbp]
     \begin{tabular}{c|c}
-      & $\neg$ \\
+      & $\sim$ \\
       \hline
       0 & 2 \\
       1 & 1 \\
@@ -313,10 +304,10 @@ $$
   \end{table}
   
   $AS_1,AS_3-AS_5$在此数值解释下永不为2，而$AS_2$可能为2，故$AS_1,AS_3-AS_5$不能表示出$AS_2$。
-  \item 定义$\neg$和$\vee$的真值表定义如下：
+  \item 定义$\sim$和$\vee$的真值表定义如下：
   \begin{table}[!hbp]
     \begin{tabular}{c|c}
-      & $\neg$ \\
+      & $\sim$ \\
       \hline
       0 & 1 \\
       1 & 2 \\
@@ -342,7 +333,7 @@ $$
 构造如下的数值解释：
 \begin{table}[!hbp]
   \begin{tabular}{c|c}
-    & $\neg$ \\
+    & $\sim$ \\
     \hline
     0 & 1 \\
     1 & 0 \\
@@ -356,29 +347,29 @@ $$
   \end{tabular}    
 \end{table}
 
-在此数值解释下，$AS_1-AS_3$恒为1，$P\supset \neg\neg P$不恒为1，且两个恒为1的公式经MP规则必得到一个恒为1的公式，故不能从$P^*$系统导出$P\supset \neg\neg P$。
+在此数值解释下，$AS_1-AS_3$恒为1，$P\supset \sim\sim P$不恒为1，且两个恒为1的公式经MP规则必得到一个恒为1的公式，故不能从$P^*$系统导出$P\supset \sim\sim P$。
 
 \noindent 34.解:
 
-设p,q为命题变元，A为由$\{\neg,\equiv\},p,q$构成的公式。用公式结构归纳法证明若$A_i$不是永真式或永假式，则$A_i$的真值表中取值为真的个数与取值为假的个数相等。
+设p,q为命题变元，A为由$\{\sim,\equiv\},p,q$构成的公式。用公式结构归纳法证明若$A_i$不是永真式或永假式，则$A_i$的真值表中取值为真的个数与取值为假的个数相等。
 \begin{enumerate}
   \item $A=p$或者$A=q$，显然成立；
-  \item $A=\neg B$，显然成立；
+  \item $A=\sim B$，显然成立；
   \item $A=B\equiv C$，若$\varphi(B)=\varphi(C)$或$\varphi(B)\neq\varphi(C)$时，则$A$为永真式或永假式，当$\varphi(B),\varphi(C)$不完全一样或完全相反时($\varphi$为任意指派)，通过枚举可知结论同样成立。
 \end{enumerate}
-所以，A为永真式或者永假式或A的真值表中t的个数与f的个数相等，而$v$的真值表中t的个数与f的个数不等，因此$\{\neg,\equiv\}$不能表示出$\vee$，则$\{\neg,\equiv\}$不完全。\newline
+所以，A为永真式或者永假式或A的真值表中t的个数与f的个数相等，而$v$的真值表中t的个数与f的个数不等，因此$\{\sim,\equiv\}$不能表示出$\vee$，则$\{\sim,\equiv\}$不完全。\newline
 
 \noindent 35.解:
 
 先证明对于每个n元真值函数h:$\{t,f\}^n\rightarrow\{t,f\}$，存在一个合取范式A以及n个命题变元:$p_1,p_2,\cdots,p_n$，使得$h=[\lambda p_1,\cdots\lambda p_nA]$：
 \begin{enumerate}
-  \item 若h恒取t，则令$A=p_1\vee\neg p_1$;
+  \item 若h恒取t，则令$A=p_1\vee\sim p_1$;
   \item 若h不恒为t，对P系统中的每个指派$\varphi$,令：
   \begin{align*}
     A^\varphi&=p_1^\varphi\vee p_2^\varphi\vee\cdots\vee p_n^\varphi \\
     p_i^\varphi&=\left\{
       \begin{aligned}
-        &\neg p_i &\text{若}\varphi(p_i)=t \\
+        &\sim p_i &\text{若}\varphi(p_i)=t \\
         &p_i &\text{否则}
       \end{aligned}
     \right.
@@ -390,9 +381,9 @@ $$
 \noindent 36.解:
 $\{\vee,\wedge,\supset,\equiv\}$不是完全集
 
-下面用公式结构归纳法证明，由命题变元p和$\{\vee,\wedge,\supset,\equiv\}$构成的公式没有永假式，也不能有$\{\vee,\wedge,\supset,\equiv\}$定义出$\neg$：
+下面用公式结构归纳法证明，由命题变元p和$\{\vee,\wedge,\supset,\equiv\}$构成的公式没有永假式，也不能有$\{\vee,\wedge,\supset,\equiv\}$定义出$\sim$：
 \begin{enumerate}
-  \item A为命题变元p，既不是永假式，其真值表也不具备$\neg$的形式；
+  \item A为命题变元p，既不是永假式，其真值表也不具备$\sim$的形式；
   \item $A=B\equiv C$或$A=B\supset C$或$A=B\vee C$或$A=B\wedge C$，由归纳假设知B和C的真值表具有以下两种形式：
   \begin{table}[!hbp]
     \begin{tabular}{c|c}
@@ -410,7 +401,7 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
     \end{tabular}    
   \end{table}
 \end{enumerate}
-  无论$A=B\equiv C$或$A=B\supset C$或$A=B\vee C$或$A=B\wedge C$都不能使A为永假式或者具备与$\neg$相同的真值表，所以$\{\vee,\wedge,\supset,\equiv\}$表达不出$\neg$，即不完全。\newline
+  无论$A=B\equiv C$或$A=B\supset C$或$A=B\vee C$或$A=B\wedge C$都不能使A为永假式或者具备与$\sim$相同的真值表，所以$\{\vee,\wedge,\supset,\equiv\}$表达不出$\sim$，即不完全。\newline
   
 \noindent 37.解:
 
@@ -460,7 +451,7 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
 
 \noindent 42.解：
 
-|表示与非，$p\supset q=\neg p\vee q=\neg(p\wedge\neg q)$，所以用|表示为p|(q|q)。\newline
+|表示与非，$p\supset q=\sim p\vee q=\sim(p\wedge\sim q)$，所以用|表示为p|(q|q)。\newline
 
 \noindent 43.解：
 
@@ -474,14 +465,312 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
 
 令$D=D_1\mid\left( D_1\mid D_2\right) \mid \left( \left( D_1\mid\left( D_2\mid D_1\right) \right) \mid\left( D_3\mid D_4\mid\left( D_1\mid D_3\mid\left( D_1\mid D_3\right) \right) \right) \right)$
 
-同时E也具备如上的形式，因为能在D和E上应用规则2，所以$D_1\mid(D_1\mid D_2)$=$D_1\mid(D_2\mid D_1)$,则$D_2=D_1$，且$D_3\mid D_4\mid\left( D_1\mid D_3\mid\left( D_1\mid D_3\right) \right) \right)=D_1$，显然不成立。即规则2无法应用与A的证明序列中，因此A的定理的长度必然不小于公理的长度，所以Q必然为协调的。\newline
+同时E也具备如上的形式，因为能在D和E上应用规则2，所以$D_1\mid(D_1\mid D_2)$=$D_1\mid(D_2\mid D_1)$,则$D_2=D_1$，且$D_3\mid D_4\mid\left( D_1\mid D_3\mid\left( D_1\mid D_3\right) \right) =D_1$，显然不成立。即规则2无法应用与A的证明序列中，因此A的定理的长度必然不小于公理的长度，所以Q必然为协调的。\newline
 
-\noindent 45.解：
+\noindent 45.暂无
 
+\noindent 46.
+\begin{align*}
+  &1.\quad \vdash \sim A\supset B\vee \sim A \quad &\\
+  &2.\quad \sim A \vdash B\vee \sim A \quad& 1,cp \\ 
+  &3.\quad \sim A \vdash \sim A \vee B \quad & 2,commut\\ 
+  &4.\quad \sim A \vdash A\supset B\quad & 3 \\ 
+\end{align*}
 
+\noindent 47.
+\begin{align*}
+  &1. \quad A\supset B,\sim(B\supset C)\supset \sim A,A \vdash A \quad &\in\\
+  &2. \quad A\supset B,\sim(B\supset C)\supset \sim A,A \vdash A\supset B\quad &\in\\
+  &3. \quad A\supset B,\sim(B\supset C)\supset \sim A,A \vdash B \quad &1,2,\bar{MP}\\
+  &4. \quad A\supset B,\sim(B\supset C)\supset \sim A,A \vdash \sim(B\supset C)\supset \sim A \quad &\in\\
+  &5. \quad A\supset B,\sim(B\supset C)\supset \sim A,A \vdash A\supset(B\supset C)\quad &4 \\
+  &6. \quad A\supset B,\sim(B\supset C)\supset \sim A,A \vdash B\supset C\quad &1,5,\bar{MP} \\
+  &7. \quad A\supset B,\sim(B\supset C)\supset \sim A,A \vdash C\quad &3,6,\bar{MP} \\
+  &8. \quad A\supset B,\sim(B\supset C)\supset \sim A \vdash A\supset C\quad &7,CP \\
+\end{align*}
 
+\noindent 48.
+\begin{align*}
+  &1. \quad  \vdash B\vee B\supset B \quad &AS_1 \\
+  &2. \quad  \vdash B\supset B\vee B \quad &AS_2 \\
+  &3. \quad  \vdash B\vee B \quad &1,2,\bar{MP} \\
+  &4. \quad  A\supset\sim(B\supset B)\vdash \sim A \vee \sim(B\supset B)\quad &\in \\
+  &5. \quad  A\supset\sim(B\supset B)\vdash (B\supset B)\vee A \quad &4, commu \\
+  &6. \quad  A\supset\sim(B\supset B)\vdash \sim A \quad &3,5,\bar{MP} \\
+\end{align*}
+
+\noindent 49.
+\begin{align*}
+  &1. \quad (A\vee B)\supset C,A \vdash A \quad & \in \\
+  &2. \quad (A\vee B)\supset C,A \vdash (A\vee B)\supset C \quad & \\
+  &3. \quad (A\vee B)\supset C,A \vdash A\vee B \quad &\vee_+ \\
+  &4. \quad (A\vee B)\supset C,A \vdash C \quad &2,3\bar{MP} \\
+  &5. \quad (A\vee B)\supset C \vdash A\vee C \quad &4,CP \\
+  &6. \quad (A\vee B)\supset C \vdash B\vee C \quad \text{同理} \\
+  &7. \quad (A\vee B)\supset C \vdash (A\vee C)\wedge (B\vee C)\quad &5,6,\wedge_+ \\
+  &8. \quad (A\vee C)\wedge (B\vee C) \vdash (A\vee C)\wedge (B\vee C) \quad &\in \\
+  &9. \quad (A\vee C)\wedge (B\vee C) \vdash (A\vee C) \quad &\wedge- \\
+  &10. \quad (A\vee C)\wedge (B\vee C) \vdash (B\vee C) \quad &\wedge- \\
+  &11. \quad (A\vee C)\wedge (B\vee C) \vdash (A\vee B)\supset(C\vee C) &\vee\supset\vee \\
+  &12. \quad \vdash(C\vee C)\supset C \quad &AS_1 \\
+  &13. \quad (A\vee C)\wedge (B\vee C) \vdash (A\vee B)\supset C &11,12,\bar{MP} \\
+\end{align*}
+
+\noindent 50.
+\begin{align*}
+  &1. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash A\wedge \sim C \quad &\in \\
+  &2. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash A\quad &1,\wedge- \\
+  &3. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash \sim C \quad &1,\wedge- \\
+  &4. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash \sim C\supset \sim(A\wedge B)\quad &1,\in,\supset\sim \\
+  &5. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash \sim(A\wedge B) \quad &3,4,\bar{MP} \\
+  &6. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash A\supset \sim B \quad &5 \\
+  &7. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash \sim B \quad &2,6,\bar{MP} \\
+  &8. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash \sim B\vee C \quad &7,\vee+ \\
+  &9. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash B\supset C \quad &8 \\
+  &10. \quad A\vee B\supset C \vdash \sim(A\supset C)\supset(B\supset C) \quad &9,CP \\
+  &11. \quad A\vee B\supset C \vdash (A\supset C)\vee (B\supset C) \quad &10 \\
+  &12. \quad A\supset C,A\wedge B \vdash A\wedge B \quad &\in \\
+  &13. \quad A\supset C,A\wedge B \vdash A \quad &12,\wedge- \\  
+  &14. \quad A\supset C,A\wedge B \vdash A\supset C \quad &\in \\
+  &15. \quad A\supset C,A\wedge B \vdash C \quad &13,14,\bar{MP} \\
+  &16. \quad A\supset C \vdash A\wedge B \supset C\quad &15,CP \\
+  &17. \quad B\supset C \vdash A\wedge B \supset C\quad &\text{同理} \\
+  &18. \quad (A\supset C)\vee (B\supset C)\vdash  A\wedge B \supset C\quad &16,17,\vee\supset\vee \\
+\end{align*}
+
+\noindent 51.解:
+\begin{align*}
+  &1. \quad A\supset(B\vee C),\sim(A\supset B)\vdash A\wedge\sim B \quad&\in \\
+  &2. \quad A\supset(B\vee C),\sim(A\supset B)\vdash A \quad&1,\wedge-  \\
+  &3. \quad A\supset(B\vee C),\sim(A\supset B)\vdash \sim B \quad&1,\wedge- \\
+  &4. \quad A\supset(B\vee C),\sim(A\supset B)\vdash A\supset(B\vee C) \quad&\in \\
+  &5. \quad A\supset(B\vee C),\sim(A\supset B)\vdash B\vee C \quad& 2,4\bar{MP}\\
+  &6. \quad A\supset(B\vee C),\sim(A\supset B)\vdash \sim B\supset C  \quad&5 \\
+  &7. \quad A\supset(B\vee C),\sim(A\supset B)\vdash c\quad&3,6,\bar{MP} \\
+  &8. \quad A\supset(B\vee C),\sim(A\supset B)\vdash \sim A\vee C \quad&7,DR_4 \\
+  &9. \quad  A\supset(B\vee C),\sim(A\supset B)\vdash A\supset C \quad& 8\\
+  &10. \quad A\supset(B\vee C)\vdash (A\supset B)\vee(A\supset C)\quad&9,CP \\
+  &11. \quad A\supset B\vdash A\supset B\quad& \in\\
+  &12. \quad A\supset B\vdash A\supset(B\vee C) \quad&11,DR_4 \\
+  &13. \quad A\supset C\vdash A\supset(B\vee C) \quad&\text{同理} \\
+  &14. \quad (A\supset B)\vee(A\supset C)\vdash A\supset(B\vee C) \quad& \\
+\end{align*}
+
+\noindent 52.解：
+\begin{align*}
+  &1. \quad A\supset(B\wedge C),A \vdash A &\quad\in \\
+  &2. \quad A\supset(B\wedge C),A \vdash A\supset(B\wedge C) &\quad\in \\
+  &3. \quad A\supset(B\wedge C),A \vdash B\wedge C&\quad 1,2,\bar{MP} \\
+  &4. \quad A\supset(B\wedge C),A \vdash B &\quad 3,\wedge-\\
+  &5. \quad A\supset(B\wedge C) \vdash A\supset B &\quad 4,CP \\
+  &6. \quad A\supset(B\wedge C) \vdash A\supset C &\quad \text{同理} \\
+  &7. \quad A\supset(B\wedge C) \vdash (A\supset B)\wedge(A\supset C) &\quad 5,6,\wedge+ \\
+  &8. \quad A\supset B \vdash A\supset(B\vee C) &\quad DR_4 \\
+  &9. \quad A\supset C \vdash A\supset(B\vee C) &\quad DR_4 \\
+  &10. \quad (A\supset B)\wedge(A\supset C),A\vdash A\supset B,A\supset C, A &\quad \in \wedge- \\
+  &11. \quad (A\supset B)\wedge(A\supset C),A\vdash B,C,B\wedge C &\quad 10,\bar{MP},\wedge+ \\
+  &12. \quad (A\supset B)\wedge(A\supset C) \vdash A\supset(B\wedge C) &\quad 12,CP \\
+\end{align*}
+
+\noindent 53.解：
+\begin{align*}
+  &1. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash A\supset \sim B &\quad \in \\
+  &2. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash A\supset B &\quad \in,\wedge- \\
+  &3. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash B\supset A &\quad \in,\wedge- \\
+  &4. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash B\supset \sim A &\quad \in \\
+  &5. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash B\supset \sim B &\quad 1,3,\bar{MP} \\
+  &6. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash A\supset \sim A &\quad 2,4,\bar{MP} \\
+  &7. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash \sim A &\quad 5 \\
+  &8. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash \sim B &\quad 6 \\
+  &9. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash \sim A\wedge \sim B &\quad 7,8\wedge+ \\
+  &10.\quad A\equiv B \vdash \sim(A\supset \sim B)\vee \sim(A\vee B) &\quad 9,CP\\
+  &11.\quad A\equiv B \vdash \sim(A\equiv \sim B) &\quad 10\\
+  &12.\quad \vdash (A\equiv B)\supset \sim(A\equiv \sim B) &\quad 11,CP\\
+  &13.\quad \vdash (A\equiv \sim B)\supset (A\equiv B) &\quad 12,\supset\sim
+\end{align*}
+
+\noindent 54.解：
+\begin{align*}
+  &1.\quad A\supset(B\supset C), A\wedge B \vdash A,B &\quad \in,\wedge- \\
+  &2.\quad A\supset(B\supset C), A\wedge B \vdash C, &\quad 1,\bar{MP} \\
+  &3.\quad A\supset(B\supset C) \vdash (A\wedge B)\supset C, &\quad 2,CP \\
+  &4.\quad (A\wedge B)\supset C,A,B \vdash A,B &\quad \in \\
+  &5.\quad (A\wedge B)\supset C,A,B \vdash A\wedge B &\quad4, \wedge+ \\
+  &6.\quad (A\wedge B)\supset C,A,B \vdash C &\quad5,\in,\bar{MP} \\
+  &7.\quad (A\wedge B)\supset C \vdash A\supset(B\supset C) &\quad 6,MP,MP \\  
+\end{align*}
+
+\noindent 55.参考50\newline
+\noindent 56.参考51\newline
+\noindent 57.参考36\newline
+\noindent 58.
+\begin{align*}
+  &\sim a = a\mid a \\ 
+  &\sim a = a \downarrow a\\
+  &a\vee b = (a\mid a)\mid (b\mid b) \\
+  &a\vee b =(a\downarrow b)\downarrow(a\downarrow b)\\
+  &a\wedge b=(a\mid b)\mid (a\mid b) \\
+  &a\wedge b=(a\downarrow a)\downarrow(b\downarrow b) \\
+  &a\supset b=a\mid(b\mid b) \\ 
+  &a\supset b=(a\downarrow a)\downarrow b\downarrow (a\downarrow a)\downarrow b \\
+  &a\equiv b = ((a\mid(b\mid b)\mid(b\mid(a\mid a)))\mid ((a\mid(b\mid b)\mid(b\mid(a\mid a))) \\
+  &a\equiv b = ((a\downarrow a)\downarrow b)\downarrow((b\downarrow b)\downarrow a)
+\end{align*}
+对于将公式化成$\mid$或$\downarrow$的形式，可以先化成$\sim(a\wedge b)$或$\sim(a\vee b)$的形式，然后用$\mid$或$\downarrow$做替换。\newline
+
+\noindent 59.解：
+\begin{enumerate}
+  \item 因为$C_1,C_2,\cdots,C_m$互异，且排序关系是全序的，所以$C_1,C_2,\cdots,C_m$排序后的结果是唯一的。
+  
+  令$T=\{\varphi|\varphi(A)=t\}$，因为A不是永假式，所以$T\neq \emptyset$；
+  令$$x_i^\varphi=
+  \left\{
+    \begin{aligned}
+      &x_i,\quad &\text{若}\varphi(x_i)=t\\
+      &\sim x_i, \quad &\text{若}\varphi(x_i)=f\\
+    \end{aligned}
+  \right.
+  $$
+  则$\varphi(x_1^\varphi\wedge x_2^\varphi\wedge\cdots \wedge x_n^\varphi)=t$,令$C'_i=x_1^{\varphi_i}\wedge x_2^{\varphi_i}\wedge\cdots \wedge x_n^{\varphi_i}$,对$C'_1,C'_2,\cdots,C'_n$进行排序得到$C_1,C_2,\cdots,C_n$，则$B=C_1\vee C_2\vee\cdots\vee C_n$即为A的唯一的完全解析式。
+  
+  再证$\varphi(A)=\varphi(B)$。对于任意指派$\varphi$
+  \begin{itemize}
+    \item 若$\varphi(A)=t$，故存在一个$C'_i$，满足$\varphi(C'_i)=t$,又$C'_i$为B的一个合取项，故$\varphi(B)=t$。
+    \item 若$\varphi(B)=t$，故B存在一个析取项C使得$\varphi(C)=t$，所以$\varphi\in T$，所以$\varphi(A)=t$.
+  \end{itemize}
+  \item A为永真式，则$^\#T=2^n$，故有$2^n$个短句，则$m=2^n$。
+\end{enumerate}
+
+\noindent 60.解：
+\begin{itemize}
+  \item 析取范式:$$(\sim p\wedge q\wedge r)\vee(p\wedge \sim q\wedge \sim r)\vee(p\wedge \sim q\wedge r)\vee(p\wedge q\wedge\sim r)$$
+  合取范式：$$(p\vee q\vee r)\wedge(p\vee  q\vee \sim r)\wedge(p\vee \sim q\vee r)\wedge(\sim p\vee\sim q\vee\sim r)$$
+  \item 析取范式：$$(\sim p\wedge \sim r\wedge \sim q)\vee(\sim p\wedge r\wedge q)$$
+  合取范式：$$(p\vee r\vee \sim q)\wedge(p\vee\sim r\vee q)\wedge(\sim p\vee r\vee q)\wedge(\sim p\vee r\vee\sim q)\wedge(\sim p\vee \sim r\vee q)\wedge(\sim p\vee \sim r\vee \sim q)$$
+  \item 析取范式：$$(\sim p\wedge \sim r\wedge \sim q)\vee(\sim p\wedge \sim r\wedge q)\vee(\sim p\wedge r\wedge q)\vee(p\wedge \sim r\wedge q)\vee(p\wedge r\wedge q)$$
+  合取范式：$$(p\vee \sim r\vee q)\wedge(\sim p\vee r\vee q)\wedge(\sim p\vee \sim r\vee q)$$
+\end{itemize}
+
+\noindent 61.解:
+\begin{enumerate}
+  \item $(p\wedge\sim q)\vee p$
+  \item $p\wedge(q\vee r)$
+  \item $\sim q$
+  \item $p$
+\end{enumerate}
+
+\noindent 62.解:
+\begin{align*}
+  &1. \quad S \quad & \\
+  &2. \quad \{r,s,\sim r\vee \sim s,q\vee r\}\&\{\sim q,q\vee s,\sim r\vee \sim s,q\vee r\} \quad &\text{关于p的分裂规则} \\
+  &3. \quad \{r,q,\sim r,q\vee r\}\&\{s,\sim r\vee \sim s,r\} \quad &\text{关于s和}\sim q\text{的单文字规则} \\
+  &4. \quad \{\qed\}\&\{\qed\}\quad & \\
+\end{align*}
+
+\noindent 63.解：
+\begin{align*}
+  &1. \quad S \quad & \\
+  &2. \quad \{p\vee q,p\vee\sim r,q\vee\sim r\vee p,\sim r\vee q\} \quad &1,\text{重言式规则} \\
+  &3. \quad \{\sim r\vee q\} \quad &2,\text{关于p的纯文字规则} \\
+  &4. \quad \emptyset \quad &3,\text{关于q的纯文字规则} \\
+\end{align*}
+
+\noindent 64.解:
+\begin{align*}
+  &1. \quad S \\
+  &2. \quad \{\sim r,q\vee r\}\&\{q,\sim q\vee \sim r, q\vee r\} \quad &1,\text{关于p的分裂规则} \\
+  &3. \quad \{q\}\&\{r,\sim r\} \quad &2,\text{关于}\sim r,q\text{的单文字规则} \\
+  &4. \quad \emptyset\&\{\qed\} \quad &3,\text{关于q的纯文字规则，关于r的单文字规则} \\
+\end{align*}
+
+\noindent 65.解:
+\begin{align*}
+  &1. \quad S \\
+  &2. \quad \{q\vee r,\sim q\vee s,\sim r\vee s, \sim s,q\vee \sim r\} \quad &1,\text{关于}\sim p\text{的单文字规则}\\
+  &3. \quad \{q\vee r,\sim q,\sim r,q\vee \sim r\} \quad &2,\text{关于}\sim s\text{的单文字规则}\\
+  &4. \quad \{r,\sim r\} \quad &3,\text{关于}\sim q\text{的单文字规则}\\ 
+  &5. \quad \{\qed\} \quad &4,\text{关于}\sim r\text{的单文字规则}\\
+\end{align*}
+
+66-68可以先化为否定范式，画出平面图，求合取支集合，对合取支元素进行取反，然后消解，如能消解出空短句，则原式为永真式；也可以直接取反，化为析取范式，进行消解。
+
+\noindent 66.解：
+合取支集合为$\{\sim p,q\wedge \sim r,s\wedge r,s\wedge\sim q,p\wedge r,p\wedge\sim q\}$，令$S=\{p,\sim q\vee r,\sim s\vee \sim r,\sim s\vee q,\sim p\vee \sim r,\sim p\vee q\}$
+
+对S进行消解：
+\begin{align*}
+  &1. \quad S \\
+  &2. \quad \{\sim q\vee r,\sim s\vee \sim r, \sim s\vee q,\sim r,q\} \quad &1,\text{关于p的单文字规则}\\
+  &3. \quad \{\sim q,\sim s,\sim s\vee q,q\} \quad &2,\text{关于}\sim r\text{的单文字规则}\\
+  &4. \quad \{\qed\} \quad &3,\text{关于q的单文字规则,关于}\sim s\text{的纯文字规则}
+\end{align*}
+故原式为永真式。\newline
+
+\noindent 67.解：
+原公式取反后的短句集为$S=\{p\vee q,\sim p\vee r,\sim p\vee \sim s,\sim r\vee s,r\vee \sim q,\sim q\vee \sim s\}$
+
+对S进行消解：
+\begin{align*}
+  &1. \quad S \\
+  &2. \quad \{q,\sim r\vee s,r\vee \sim q,\sim q\vee \sim s\}\&\{r,\sim s,\sim r\vee s,r\vee \sim q,\sim q\vee \sim s\} \quad &1,\text{关于p的单文字规则}\\
+  &3. \quad \{\sim r\vee s,r,\sim s\}\&\{\sim s,s,\sim q,\sim q\vee \sim s\} \quad &2,\text{关于q,r的单文字规则}\\
+  &4. \quad \{\qed\}\&\{\qed\}
+\end{align*}
+故原式为永真式。\newline
+
+\noindent 68.解：
+原公式取反后短句集为$S=\{p\vee q,s\vee\sim q\vee r,\sim r\vee q,\sim s\vee q,\sim q\}$
+
+对S进行消解:
+\begin{align*}
+  &1. \quad S \\
+  &2. \quad \{p,\vee\sim q\vee r,\sim r,\sim s\} \quad &1,\text{关于}\sim q\text{的单文字规则}\\
+  &3. \quad \{p,s\vee\sim p,\sim s\} \quad &2,\text{关于}\sim r\text{的单文字规则}\\
+  &4. \quad \{s,\sim s\} \quad 3,\text{关于p的单文字规则}\\
+  &5. \quad \{\qed\}
+\end{align*}
+故原公式为永真式。\newline
+
+\noindent 69.略(太长，可以用平面图)
+
+\noindent 70.解：
+\begin{enumerate}
+  \item P中z,Q中u
+  \item z,u
+  \item u,x,z
+  \item g(x)对公式中u不自由
+  \item h(x,y)对公式中u不自由
+  \item u对公式中x自由
+\end{enumerate}
+
+\noindent 71.解：
+\begin{enumerate}
+  \item $\forall{x \in H}(B(x)\wedge W(t(x))\supset K(m(x)))$
+  \item $\forall{xy \in H}(H(y)\wedge W(x)\wedge K(m(y))\supset \sim L(x,y))$
+  \item $\sim \exists{x \in H}(B(x)\wedge W(t(x)))$
+  \item 在牲口棚中有一匹马和牲口棚中所有的黑尾巴马相像
+  \item 在牲口棚中不存在没有白尾巴的马
+\end{enumerate}
+
+\noindent 72.解：
+\begin{enumerate}
+  \item $\forall{x}(C(x,f(r))\supset U(x,r))$
+  \item 如果两个人的父亲是兄弟，那么这两个人就是堂兄弟
+  \item $\exists{xy}(C(x,r)\wedge B(y,r)\supset Y(x,y))$
+\end{enumerate}
+
+\noindent 73.解：
+\begin{enumerate}
+  \item 自由变元:x，约束变元:x，任意项都可以代入
+  \item 自由变元:y，约束变元:x,y，x不出现的项可以代入
+\end{enumerate}
+
+\noindent 74.解：
+
+n+1,n-1都有可能
 
 \noindent 75.解：
+
 用结构归纳法证明
 \begin{enumerate}
   \item 若A为命题变元
@@ -490,16 +779,41 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
     \item A为命题变元，且$A=p\neq m$, 则$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BA=S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}p=p=S_C^mA$
   \end{enumerate}
   \item A为原子公式，$A=P(t_1,t_2,\cdots,t_k),t_i=f(y_1,y_2,\cdots,y_j),1\leq i\leq k$,则m不在A中出现，所以 $S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BA=A=S_C^mA$
-  \item $A=\neg D$，因为$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BD=S_C^mD$，所以$\neg S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BD=\neg S_C^mD$,即$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BA=S_C^mA$
+  \item $A=\sim D$，因为$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BD=S_C^mD$，所以$\sim S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BD=\sim S_C^mD$,即$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BA=S_C^mA$
   \item $A=D\vee E$，因为$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BD=S_C^mD$，且$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BE=S_C^mE$，则$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BD\vee S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BE=S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_B( D\vee E ) =S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BA=S_C^mD \vee S_C^mE=S_C^m(D \vee E)=S_C^mA$
   \item $A=\forall{y}D$,则$y\not\in\{u_1,u_2,\cdots,u_n\}$,则B对A中m是自由的,且$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BD=S_C^mD$，，所以$S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BA=S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_B\forall{y}D=\forall{y}S^{u_1,u_2.\cdots,u_n}_{x_1,x_2,\cdots,x_n}S^m_BD=\forall{y}S_C^mD=S_C^m\forall{y}D=S_C^mA$
 \end{enumerate}
 综上，结论成立.\newline
 
 \noindent 76.解：
-  
-  
 
+相同公式中，运算符的运算顺序也是相同的，若$B\neq D$，假设B是D的前缀，令$D=B\vee F$，则$D\vee E=B\vee F\vee E$，故$C=F\vee E$，这就导致$B\vee C$中的“$\vee$”与$D\vee E$中的“$\vee$”运算次序不同，故B不为D的前缀，同理D不为B的前缀，从而B=D。同理得C=E。\newline
+  
+\noindent 77.解：
+
+用公式结构归纳法证明：
+\begin{enumerate}
+  \item C为原子公式，显然y在C中不出现，$S_x^yS_y^xC=C$;
+  \item $C=\sim A$，因为$S_x^yS_y^xA=A$,所以$S_x^yS_y^xC=S_x^yS_y^x\sim A=\sim S_x^yS_y^xA=\sim A=C$;
+  \item $C=B\vee D$，因为$S_x^yS_y^xB=B$且$S_x^yS_y^xD=D$，所以$S_x^yS_y^xC=S_x^yS_y^x(B\vee D)=S_x^yS_y^xB\vee S_x^yS_y^xD=B\vee D=C$;
+  \item $C=\forall{z}B$
+  \begin{itemize}
+    \item 若z=x，则$S^x_yC=S^x_y\forall{x}B=\forall{x}B=C$,y在C中不自由，$S^y_xC=C$，所以$S_x^yS_y^xC=C$;
+    \item 若z=y，则$S^x_yC=S^x_y\forall{y}B$，因为y对C中x是自由的，所以x不在C中出现，故$S^x_yC=C,S^y_xC=C$，所以$S_x^yS_y^xC=C$;
+    \item 若$z\neq x,y$，则$S_x^yS_y^xC=S_x^yS_y^x(\forall{z}B)=\forall{z}S_x^yS_y^xB=\forall{z}B=C$。
+  \end{itemize}
+\end{enumerate}
+综上，若y在C中不自由，且y对C中x是自由的，则$S_x^yS_y^xC=C$。
+
+\noindent 78.解：
+
+令$A=(p\equiv q)\wedge(p\equiv\sim(r\supset q))\supset (q\supset\sim r)$，则A为P永真。
+
+令$B=(\forall{x}(G(x)\supset H(x))\equiv \exists{x}H(x))\wedge (\forall{x}(G(x)\supset H(x))\equiv \sim(\forall{x}G(x)\supset \exists{x}H(x)))\supset(\exists{x}H(x)\supset\sim\forall{x}G(x))$
+
+则$B=S^{p,q,r}_{\forall{x}(G(x)\supset H(x)),\exists{x}H(x),\forall{x}G(x)}A$，故B为P用真的，则通过P规则可以导出$\exists{x}H(x)\supset\sim\forall{x}G(x)$。\newline
+
+\noindent 79.解：
 
 
 \end{document}

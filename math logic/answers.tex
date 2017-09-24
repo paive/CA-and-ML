@@ -4,6 +4,7 @@
 \usepackage{titlesec}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{amssymb}
 \usepackage{multirow}
 \usepackage{ulem}
 \newcommand{\li}{\uline{\hspace{0.5em}}}
@@ -133,7 +134,7 @@ P'系统可以看做P系统由$\sim(p\supset q)$出发进行的证明
 \begin{align*}
   &1.\quad \vdash A\vee A\supset A &AS_{1} \\
   &2.\quad \vdash (A\vee A\supset A)\supset \sim(A\vee A\supset A)&AS' \\
-  &3.\quad \vdash \sim(A\vee A\supset A) &1,2,\bar{MP} \\
+  &3.\quad \vdash \sim(A\vee A\supset A) &1,2,\overline{MP} \\
   &4.\quad \vdash B &3,DR \\
 \end{align*}
 故在P系统中增加$A\supset B$做为公理所得系统不协调。\newline
@@ -407,8 +408,8 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
 
 首先用归纳法证明：若A为仅由$\equiv$构成的合式公式(且其中的命题变元为$p_1,p_2,\cdots,p_n$)，则任意改变$p_1,p_2,\cdots,p_n$的出现顺序所形成的新公式B与A等价，用$^\#A$表示A中命题变元和$\equiv$出现的次数，则$^\#A=2i+1(i=0,1,\cdots)$，
 \begin{enumerate}
-    \item i=0,1，显然成立;
-    \item i=k(k>1)，$A_k=A_{k-1}\equiv P_k$，设$A_{k-1}=B\equiv C$，则$A_k=B\equiv C\equiv P_k$，显然$A_k$与$C\equiv P_k \equiv B$、$P_k \equiv B \equiv C$、$B \equiv P_k  \equiv C$等价
+    \item i=0,1时显然成立;
+    \item i=k\ (k>1)，$A_k=A_{k-1}\equiv P_k$，设$A_{k-1}=B\equiv C$，则$A_k=B\equiv C\equiv P_k$，显然$A_k$与$C\equiv P_k \equiv B$、$P_k \equiv B \equiv C$、$B \equiv P_k  \equiv C$等价
 \end{enumerate}
 故仅由$\equiv$构成的命题合式公式A(且其中的命题变元为$p_1,p_2,\cdots,p_n$)与下式等价:
 \begin{equation*}
@@ -435,7 +436,7 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
   \item $A=B\not\equiv C$
   \begin{enumerate}
     \item 若A能变换到1，则B能变换到0、C能变换到1，或者B能变换到1、C能变换到0，根据归纳假设，B、C中有一个为永真式，另一个不为永真式，故A为永真式。
-    \item 若A为永真式，根据归纳假设，B和C中只能有一个永真式，所以A能变换到1(根据归纳假设，B和C中的永假式只能变换到0)
+    \item 若A为永真式，根据归纳假设，B和C中只能有一个永真式，所以A能变换到1(根据归纳假设，B和C中的永假式只能变换到0。
   \end{enumerate}
   
 \end{enumerate}
@@ -459,15 +460,29 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
 
 \noindent 44.解：
 
-设A是Q的定理，则A存在证明序列$A_1,A_2,\cdots,A_m(=A)$。则$A_i$为公理，或对$A_j$应用规则1所得，或对$A_k,A_j$应用规则2所得。
+此系统并不协调，下面给出简要的证明序列，为了减小公式长度，做以下表示：令$A_p=A|(A|A),A_r=S|Q \blacksquare A|S \blacksquare A|S$，其中$A,S,Q$均为任意公式。
+\begin{align*}
+  &1. \ \vdash p|(p|r)|\blacksquare p|(r|p)| \blacksquare s|q \blacksquare p|s \blacksquare p|s \\
+  &2. \ \vdash A|(A|A)|\blacksquare A|(A|A)| \blacksquare S|Q \blacksquare A|S \blacksquare A|S \ &1,Rule\ i)\\
+  &3. \ \vdash A_p|(A_p|A_r)|\blacksquare A_p|(A_r|A_p)| \blacksquare S|Q \blacksquare A_p|S \blacksquare A_p|S \ &1,Rule\ i)\\
+  &4. \ \vdash S|Q \blacksquare A_p|S \blacksquare A_p|S \ &2,3,Rule\ ii)\\
+  &5. \ \vdash S'|Q' \blacksquare A_p|S' \blacksquare A_p|S' \ &4\\
+  &6. \ \vdash A_p|(S'|Q') \ &4,5,Rule\ ii)\\
+  &7. \ \vdash A_p|A_p \blacksquare A_p|A_p \blacksquare A_p|A_p \ &4 \\
+  &8. \ \vdash Q' \ &6,7,Rule\ ii)
+\end{align*}
 
-假设第一次应用规则2时，令$A_j=D,A_k=E$,则D，E皆由规则1得出或为公理。
+\noindent 45.此题可能存疑
 
-令$D=D_1\mid\left( D_1\mid D_2\right) \mid \left( \left( D_1\mid\left( D_2\mid D_1\right) \right) \mid\left( D_3\mid D_4\mid\left( D_1\mid D_3\mid\left( D_1\mid D_3\right) \right) \right) \right)$
-
-同时E也具备如上的形式，因为能在D和E上应用规则2，所以$D_1\mid(D_1\mid D_2)$=$D_1\mid(D_2\mid D_1)$,则$D_2=D_1$，且$D_3\mid D_4\mid\left( D_1\mid D_3\mid\left( D_1\mid D_3\right) \right) =D_1$，显然不成立。即规则2无法应用与A的证明序列中，因此A的定理的长度必然不小于公理的长度，所以Q必然为协调的。\newline
-
-\noindent 45.暂无
+若$S=\cup_\varphi\{p_1^\varphi\wedge p_2^\varphi\wedge\cdots\}$，其中$$p_i^\varphi=
+\left\{
+  \begin{aligned}
+    &p_i,\quad &\text{若}\varphi(p_i)=t\\
+    &\sim p_i, \quad &\text{若}\varphi(p_i)=f\\
+  \end{aligned}
+\right.
+$$
+因此，S中的每一个元素只有一个指派使其为真，所以S是析取有效的，但其任意有限子集不是析取有效的。\newline
 
 \noindent 46.
 \begin{align*}
@@ -481,11 +496,11 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
 \begin{align*}
   &1. \quad A\supset B,\sim(B\supset C)\supset \sim A,A \vdash A \quad &\in\\
   &2. \quad A\supset B,\sim(B\supset C)\supset \sim A,A \vdash A\supset B\quad &\in\\
-  &3. \quad A\supset B,\sim(B\supset C)\supset \sim A,A \vdash B \quad &1,2,\bar{MP}\\
+  &3. \quad A\supset B,\sim(B\supset C)\supset \sim A,A \vdash B \quad &1,2,\overline{MP}\\
   &4. \quad A\supset B,\sim(B\supset C)\supset \sim A,A \vdash \sim(B\supset C)\supset \sim A \quad &\in\\
   &5. \quad A\supset B,\sim(B\supset C)\supset \sim A,A \vdash A\supset(B\supset C)\quad &4 \\
-  &6. \quad A\supset B,\sim(B\supset C)\supset \sim A,A \vdash B\supset C\quad &1,5,\bar{MP} \\
-  &7. \quad A\supset B,\sim(B\supset C)\supset \sim A,A \vdash C\quad &3,6,\bar{MP} \\
+  &6. \quad A\supset B,\sim(B\supset C)\supset \sim A,A \vdash B\supset C\quad &1,5,\overline{MP} \\
+  &7. \quad A\supset B,\sim(B\supset C)\supset \sim A,A \vdash C\quad &3,6,\overline{MP} \\
   &8. \quad A\supset B,\sim(B\supset C)\supset \sim A \vdash A\supset C\quad &7,CP \\
 \end{align*}
 
@@ -493,10 +508,10 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
 \begin{align*}
   &1. \quad  \vdash B\vee B\supset B \quad &AS_1 \\
   &2. \quad  \vdash B\supset B\vee B \quad &AS_2 \\
-  &3. \quad  \vdash B\vee B \quad &1,2,\bar{MP} \\
+  &3. \quad  \vdash B\vee B \quad &1,2,\overline{MP} \\
   &4. \quad  A\supset\sim(B\supset B)\vdash \sim A \vee \sim(B\supset B)\quad &\in \\
   &5. \quad  A\supset\sim(B\supset B)\vdash (B\supset B)\vee A \quad &4, commu \\
-  &6. \quad  A\supset\sim(B\supset B)\vdash \sim A \quad &3,5,\bar{MP} \\
+  &6. \quad  A\supset\sim(B\supset B)\vdash \sim A \quad &3,5,\overline{MP} \\
 \end{align*}
 
 \noindent 49.
@@ -504,7 +519,7 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
   &1. \quad (A\vee B)\supset C,A \vdash A \quad & \in \\
   &2. \quad (A\vee B)\supset C,A \vdash (A\vee B)\supset C \quad & \\
   &3. \quad (A\vee B)\supset C,A \vdash A\vee B \quad &\vee_+ \\
-  &4. \quad (A\vee B)\supset C,A \vdash C \quad &2,3\bar{MP} \\
+  &4. \quad (A\vee B)\supset C,A \vdash C \quad &2,3\overline{MP} \\
   &5. \quad (A\vee B)\supset C \vdash A\vee C \quad &4,CP \\
   &6. \quad (A\vee B)\supset C \vdash B\vee C \quad \text{同理} \\
   &7. \quad (A\vee B)\supset C \vdash (A\vee C)\wedge (B\vee C)\quad &5,6,\wedge_+ \\
@@ -513,7 +528,7 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
   &10. \quad (A\vee C)\wedge (B\vee C) \vdash (B\vee C) \quad &\wedge- \\
   &11. \quad (A\vee C)\wedge (B\vee C) \vdash (A\vee B)\supset(C\vee C) &\vee\supset\vee \\
   &12. \quad \vdash(C\vee C)\supset C \quad &AS_1 \\
-  &13. \quad (A\vee C)\wedge (B\vee C) \vdash (A\vee B)\supset C &11,12,\bar{MP} \\
+  &13. \quad (A\vee C)\wedge (B\vee C) \vdash (A\vee B)\supset C &11,12,\overline{MP} \\
 \end{align*}
 
 \noindent 50.
@@ -522,9 +537,9 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
   &2. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash A\quad &1,\wedge- \\
   &3. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash \sim C \quad &1,\wedge- \\
   &4. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash \sim C\supset \sim(A\wedge B)\quad &1,\in,\supset\sim \\
-  &5. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash \sim(A\wedge B) \quad &3,4,\bar{MP} \\
+  &5. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash \sim(A\wedge B) \quad &3,4,\overline{MP} \\
   &6. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash A\supset \sim B \quad &5 \\
-  &7. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash \sim B \quad &2,6,\bar{MP} \\
+  &7. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash \sim B \quad &2,6,\overline{MP} \\
   &8. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash \sim B\vee C \quad &7,\vee+ \\
   &9. \quad (A\wedge B)\supset C,\sim(A\supset C) \vdash B\supset C \quad &8 \\
   &10. \quad A\vee B\supset C \vdash \sim(A\supset C)\supset(B\supset C) \quad &9,CP \\
@@ -532,7 +547,7 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
   &12. \quad A\supset C,A\wedge B \vdash A\wedge B \quad &\in \\
   &13. \quad A\supset C,A\wedge B \vdash A \quad &12,\wedge- \\  
   &14. \quad A\supset C,A\wedge B \vdash A\supset C \quad &\in \\
-  &15. \quad A\supset C,A\wedge B \vdash C \quad &13,14,\bar{MP} \\
+  &15. \quad A\supset C,A\wedge B \vdash C \quad &13,14,\overline{MP} \\
   &16. \quad A\supset C \vdash A\wedge B \supset C\quad &15,CP \\
   &17. \quad B\supset C \vdash A\wedge B \supset C\quad &\text{同理} \\
   &18. \quad (A\supset C)\vee (B\supset C)\vdash  A\wedge B \supset C\quad &16,17,\vee\supset\vee \\
@@ -544,9 +559,9 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
   &2. \quad A\supset(B\vee C),\sim(A\supset B)\vdash A \quad&1,\wedge-  \\
   &3. \quad A\supset(B\vee C),\sim(A\supset B)\vdash \sim B \quad&1,\wedge- \\
   &4. \quad A\supset(B\vee C),\sim(A\supset B)\vdash A\supset(B\vee C) \quad&\in \\
-  &5. \quad A\supset(B\vee C),\sim(A\supset B)\vdash B\vee C \quad& 2,4\bar{MP}\\
+  &5. \quad A\supset(B\vee C),\sim(A\supset B)\vdash B\vee C \quad& 2,4\overline{MP}\\
   &6. \quad A\supset(B\vee C),\sim(A\supset B)\vdash \sim B\supset C  \quad&5 \\
-  &7. \quad A\supset(B\vee C),\sim(A\supset B)\vdash c\quad&3,6,\bar{MP} \\
+  &7. \quad A\supset(B\vee C),\sim(A\supset B)\vdash c\quad&3,6,\overline{MP} \\
   &8. \quad A\supset(B\vee C),\sim(A\supset B)\vdash \sim A\vee C \quad&7,DR_4 \\
   &9. \quad  A\supset(B\vee C),\sim(A\supset B)\vdash A\supset C \quad& 8\\
   &10. \quad A\supset(B\vee C)\vdash (A\supset B)\vee(A\supset C)\quad&9,CP \\
@@ -560,7 +575,7 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
 \begin{align*}
   &1. \quad A\supset(B\wedge C),A \vdash A &\quad\in \\
   &2. \quad A\supset(B\wedge C),A \vdash A\supset(B\wedge C) &\quad\in \\
-  &3. \quad A\supset(B\wedge C),A \vdash B\wedge C&\quad 1,2,\bar{MP} \\
+  &3. \quad A\supset(B\wedge C),A \vdash B\wedge C&\quad 1,2,\overline{MP} \\
   &4. \quad A\supset(B\wedge C),A \vdash B &\quad 3,\wedge-\\
   &5. \quad A\supset(B\wedge C) \vdash A\supset B &\quad 4,CP \\
   &6. \quad A\supset(B\wedge C) \vdash A\supset C &\quad \text{同理} \\
@@ -568,7 +583,7 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
   &8. \quad A\supset B \vdash A\supset(B\vee C) &\quad DR_4 \\
   &9. \quad A\supset C \vdash A\supset(B\vee C) &\quad DR_4 \\
   &10. \quad (A\supset B)\wedge(A\supset C),A\vdash A\supset B,A\supset C, A &\quad \in \wedge- \\
-  &11. \quad (A\supset B)\wedge(A\supset C),A\vdash B,C,B\wedge C &\quad 10,\bar{MP},\wedge+ \\
+  &11. \quad (A\supset B)\wedge(A\supset C),A\vdash B,C,B\wedge C &\quad 10,\overline{MP},\wedge+ \\
   &12. \quad (A\supset B)\wedge(A\supset C) \vdash A\supset(B\wedge C) &\quad 12,CP \\
 \end{align*}
 
@@ -578,8 +593,8 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
   &2. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash A\supset B &\quad \in,\wedge- \\
   &3. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash B\supset A &\quad \in,\wedge- \\
   &4. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash B\supset \sim A &\quad \in \\
-  &5. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash B\supset \sim B &\quad 1,3,\bar{MP} \\
-  &6. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash A\supset \sim A &\quad 2,4,\bar{MP} \\
+  &5. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash B\supset \sim B &\quad 1,3,\overline{MP} \\
+  &6. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash A\supset \sim A &\quad 2,4,\overline{MP} \\
   &7. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash \sim A &\quad 5 \\
   &8. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash \sim B &\quad 6 \\
   &9. \quad (A\supset B)\wedge(B\supset A),\sim A\vee \sim B \vdash \sim A\wedge \sim B &\quad 7,8\wedge+ \\
@@ -592,11 +607,11 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
 \noindent 54.解：
 \begin{align*}
   &1.\quad A\supset(B\supset C), A\wedge B \vdash A,B &\quad \in,\wedge- \\
-  &2.\quad A\supset(B\supset C), A\wedge B \vdash C, &\quad 1,\bar{MP} \\
+  &2.\quad A\supset(B\supset C), A\wedge B \vdash C, &\quad 1,\overline{MP} \\
   &3.\quad A\supset(B\supset C) \vdash (A\wedge B)\supset C, &\quad 2,CP \\
   &4.\quad (A\wedge B)\supset C,A,B \vdash A,B &\quad \in \\
   &5.\quad (A\wedge B)\supset C,A,B \vdash A\wedge B &\quad4, \wedge+ \\
-  &6.\quad (A\wedge B)\supset C,A,B \vdash C &\quad5,\in,\bar{MP} \\
+  &6.\quad (A\wedge B)\supset C,A,B \vdash C &\quad5,\in,\overline{MP} \\
   &7.\quad (A\wedge B)\supset C \vdash A\supset(B\supset C) &\quad 6,MP,MP \\  
 \end{align*}
 
@@ -814,6 +829,312 @@ n+1,n-1都有可能
 则$B=S^{p,q,r}_{\forall{x}(G(x)\supset H(x)),\exists{x}H(x),\forall{x}G(x)}A$，故B为P用真的，则通过P规则可以导出$\exists{x}H(x)\supset\sim\forall{x}G(x)$。\newline
 
 \noindent 79.解：
+\begin{align*}
+  &1. \quad \forall{x}(R(x)\supset P(x))\wedge \forall{x}(\sim Q(x)\supset R(x)) \vdash \forall{x}(R(x)\supset P(x)),\forall{x}(\sim Q(x)\supset R(x))  \quad &\in,\wedge- \\
+  &2. \quad \forall{x}(R(x)\supset P(x))\wedge \forall{x}(\sim Q(x)\supset R(x)) \vdash R(x)\supset P(x) \quad &1,AS_4\\
+  &3. \quad \forall{x}(R(x)\supset P(x))\wedge \forall{x}(\sim Q(x)\supset R(x)) \vdash \sim Q(x)\supset R(x) \quad &1,AS_4\\
+  &4. \quad \forall{x}(R(x)\supset P(x))\wedge \forall{x}(\sim Q(x)\supset R(x)) \vdash \sim Q(x) \supset P(x) \quad &2,3,trans\\
+  &5. \quad \forall{x}(R(x)\supset P(x))\wedge \forall{x}(\sim Q(x)\supset R(x)) \vdash P(x)\vee Q(x) \quad &4.\equiv sub iii)\\
+  &6. \quad \forall{x}(R(x)\supset P(x))\wedge \forall{x}(\sim Q(x)\supset R(x)) \vdash \forall{x}( P(x)\vee Q(x)) \quad &5,gen\\
+  &7. \quad \vdash \forall{x}(R(x)\supset P(x))\wedge \forall{x}(\sim Q(x)\supset R(x)) \supset  \forall{x}( P(x)\vee Q(x)) \quad &6,CP
+\end{align*}
+
+\noindent 80.解：
+\begin{align*}
+  &1.\quad P(x)\vdash P(x) &\in \\
+  &2.\quad \vdash P(x)\supset P(x) &1,CP\\
+  &3.\quad \vdash S_x^y(P(x)\supset P(y)) &2\\
+  &4.\quad \vdash \exists{y}(P(x)\supset P(y)) &3,\text{x对}P(x)\supset P(y)\text{中y自由}\\
+  &5.\quad \vdash \forall{x}\exists{y}(P(x)\supset P(y)) &4,gen
+\end{align*}
+
+\noindent 81.解：
+\begin{align*}
+  &1. \quad p\supset\forall{x}\sim Q(x),p \vdash p\supset\forall{x}\sim Q(x) \quad &\in \\
+  &2. \quad p\supset\forall{x}\sim Q(x),p \vdash p \quad &\in \\
+  &3. \quad p\supset\forall{x}\sim Q(x),p \vdash \forall{x}\sim Q(x) \quad &1,2,\overline{MP} \\
+  &4. \quad \vdash (p\supset\forall{x}\sim Q(x))\supset\forall{x}(p\supset\sim Q(x)) \quad &3,AS_4,CP,Gen,CP\\
+  &5. \quad \vdash \sim\forall{x}(p\supset\sim Q(x))\supset\sim(p\supset\forall{x}\sim Q(x)) \quad &4,\supset\sim\\
+  &6. \quad \vdash \exists{x}(p\wedge Q(x))\supset(p\wedge\exists{x}Q(x)) &5,\equiv sub\ iii)\\
+  &7. \quad \forall{x}(p\supset\sim Q(x)),p \vdash \forall{x}(p\supset\sim Q(x)),p &\in \\
+  &8. \quad \forall{x}(p\supset\sim Q(x)),p \vdash \sim Q(x) &7,AS_4,\overline{MP} \\
+  &9. \quad \forall{x}(p\supset\sim Q(x))\vdash p\supset \forall{x}\sim Q(X) &8,Gen,CP\\
+  &10. \quad \vdash \sim(p\supset\forall{x}\sim Q(x))\supset\sim\forall{x}(p\supset\sim Q(x)) &9,CP,\supset\sim \\
+  &11. \quad \vdash p\wedge \exists{x}Q(x)\supset\exists{x}(p\wedge Q(x)) &10,\equiv sub\ iii) \\
+  &12. \quad \vdash \exists{x}(p\wedge Q(x))\equiv (p\wedge\exists{x}Q(x)) &6,11
+\end{align*}
+
+\noindent 82.解：
+\begin{align*}
+  &1. \quad \forall{y}P(y)\vdash \forall{x}P(x) &\in,\alpha\beta \\
+  &2. \quad \vdash \forall{y}P(y)\supset\forall{x}P(x) &CP \\
+\end{align*}
+$\forall{y}P(y)\supset\forall{x}P(x)$的前束范式为$\exists{y}\forall{x}(P(y)\supset P(x))$，根据前束范式定理，$\forall{y}P(y)\supset\forall{x}P(x)\equiv \exists{y}\forall{x}(P(y)\supset P(x))$。
+所以
+\begin{align*}
+  &3. \quad \vdash \exists{y}\forall{x}(P(y)\supset P(x)) &2,\equiv sub\ iii)
+\end{align*}
+也可以演绎证明$\vdash \forall{y}P(y)\supset\forall{x}P(x)\supset \exists{y}\forall{x}(P(y)\supset P(x))$。\newline
+
+\noindent 83.解：
+\begin{align*}
+  &1. \quad \forall{x}P(x)\wedge \forall{x}\sim Q(x) \vdash P(x),\sim Q(x) &\wedge-,AS_4\\
+  &2. \quad \forall{x}P(x)\wedge \forall{x}\sim Q(x) \vdash \forall{x}(P(x)\wedge Q(x)) &1,\wedge+,Gen\\
+  &3. \quad \vdash \exists{x}(P(x)\supset Q(x))\supset(\forall{x}P(x)\supset\exists{x}Q(x))   &2,CP,\supset\sim,\equiv sub\ iii)
+  \\
+  &4. \quad \forall{x}(p(x)\wedge\sim Q(x))\vdash \forall{x}P(x),\forall{x}\sim Q(x) &\in,AS_4,\wedge-,Gen\\
+  &5. \quad \forall{x}(p(x)\wedge\sim Q(x))\supset \forall{x}P(x)\wedge\forall{x}\sim Q(x) &4,\wedge+, CP\\
+  &6. \quad \vdash(\forall{x}P(x)\supset\exists{x}Q(x))\supset\exists{x}(P(x)\supset Q(x)) &5,\supset\sim,\equiv sub\ iii)\\
+  &7. \quad \vdash \exists{x}(P(x)\supset Q(x))\equiv (\forall{x}P(x)\supset\exists{x}Q(x)) &3,6\\
+\end{align*}
+
+\noindent 84.解：
+\begin{align*}
+  \exists{x}\forall{y}(P(x)\equiv P(y))&\equiv\exists{x}((\sim P(x)\vee \forall{y}P(y))\wedge(\sim\exists{y}P(y)\vee P(x)))\\
+  &\equiv\exists{x}((\sim P(x)\wedge\sim\exists{y}P(y))\vee(\forall{y}P(y)\wedge P(x))) \\
+  &\equiv(\sim\forall{x}P(x)\wedge\sim\exists{y}P(y))\vee(\forall{y}P(y)\wedge\exists{x}P(x))\\
+  &\equiv(\forall{x}P(x)\supset\forall{y}P(y))\wedge(\exists{y}P(y)\supset\forall{y}P(y))\wedge(\exists{y}P(y)\supset\exists{x}P(x))\\
+  &\equiv(\exists{y}P(y)\supset\forall{y}P(y))
+\end{align*}
+由换名规则可得$\exists{y}P(y)\supset\forall{y}P(y)\equiv \exists{x}P(x)\supset\forall{y}P(y)$，且$\forall{y}P(y)\supset\exists{}{x}P(x)$为永真式，故
+\begin{align*}
+  \exists{y}P(y)\supset\forall{y}P(y) &\equiv (\exists{x}P(x)\supset\forall{y}P(y))\wedge(\forall{y}P(y)\supset\exists{}{x}P(x)) \\
+  &\equiv(\exists{x}P(x)\equiv\forall{y}P(y))
+\end{align*}
+
+\noindent 85.解:
+
+$\forall{x}(P(x)\equiv\exists{y}P(y))$同样等价于$\exists{y}P(y)\supset\forall{y}P(y)$,后续证明参考84题。\newline
+
+\noindent 86.解：
+
+由84题知$\exists{x}\forall{y}(P(x)\equiv P(y))\equiv(\exists{x}P(x)\supset\forall{x}P(x))$，而$(\exists{x}P(x)\supset\forall{x}P(x))\equiv(\forall{x}P(x)\vee\forall{x}\sim P(x))$
+
+\noindent 87.略
+
+\noindent 88.解：
+\begin{enumerate}
+  \item $\exists{xyz}(\sim R(x,u)\wedge(\sim R(y,z)\supset Q(u,y)))$
+  \item $\exists{x}\forall{y}\exists{u}\forall{v}\sim(Q(x,y)\supset\sim(P(u,y,z)\supset\sim R(v)))$\item 
+\end{enumerate}
+
+\noindent 89.解：
+\begin{enumerate}
+  \item 由84题知，$\exists{y}\forall{x}(P(x)\equiv Q(y))$是$\forall{x}P(x)\equiv\exists{y}P(y)$的前束范式，另外$\exists{xy}\forall{ab}(P(x)\supset P(y)\wedge P(a)\supset P(b))$也是。
+  \item $\exists{a,b,x,y}(\sim P(a,b)\supset\sim(P(x,y)\supset P(u,y)))$
+\end{enumerate}
+
+\noindent 90.解：
+\begin{enumerate}
+  \item 必要性
+  
+  因为$\models_{(I,\sigma)}\exists{x}A$，所以$I(\exists{x}A)(\sigma)=t$，即$I(\forall{x}\sim A)(\sigma)=f$，所以存在$a$使得$I(\sim A)(\sigma[x|a])=f$则$I(A)(\sigma[x|a])=t$。
+
+  令$\varphi=\sigma[x|a]$，则满足条件$\varphi(y)=\sigma(y)\ (x\neq y)$，且$I(A)(\varphi)=t$，故$\models_{(I,\varphi)}A$。
+  \item 充分性
+  
+  因为$\models_{(I,\varphi)}A$，所以$I(A)(\varphi)=t$，又$\varphi(y)=\sigma(y)\ (x\neq y)$，则$I(A)(\sigma[x|\varphi(x)])=t$，即$I(\sim A)(\sigma[x|\varphi(x)])=f$，故$I(\forall{x}\sim A)(\sigma)=f$，所以$I(\exists{x}A)(\sigma)=t$，即$\models_{(I,\sigma)}\exists{x}A$。
+\end{enumerate}
+
+对于91题来说，需要先将量词移到括号中去进行证明。
+
+\noindent 91.解：
+\begin{enumerate}
+  \item 
+  \begin{align*}
+    &1.\ \forall{xz}P(z,x)\vdash\forall{z}P(z,y) \ &AS_4 \\
+    &2.\ \forall{z}P(z,y)\vdash P(y,y) \ &AS_4 \\
+    &3.\ \forall{xz}P(z,x)\vdash P(y,y) \ &1,2,trans\\
+    &4.\ \forall{xz}P(z,x)\vdash\exists{x}\forall{y}(P(x,y)\supset P(y,y)) \ &3,\vee+,Gen,\exists +\\
+    &5.\ \vdash \sim\forall{xz}P(z,x)\vee\exists{x}\forall{y}(\sim P(x,y)\vee P(y,y)) \ &4,CP\\
+    &6.\ \vdash \exists{x}\forall{y}\exists{z}(\sim P(z,x)\vee(\sim P(x,y)\vee P(y,y))) \ &5,\equiv sub\ iii) \\
+    &7.\ \vdash \exists{x}\forall{y}\exists{z}(P(z,x)\wedge P(x,y)\supset P(y,y)) \ &6,\equiv sub\ iii)\\
+  \end{align*}
+  \item 
+  \begin{align*}
+    &1.\ \forall{x}Q(x)\vdash \forall{y}Q(y) \ &\alpha\beta\\
+    &2.\ \forall{x}Q(x)\vdash \exists{x}P(x)\vee\forall{y}Q(y) \ &2,\vee+\\
+    &3.\ \vdash\sim\forall{x}Q(x)\vee(\exists{x}P(x)\vee\forall{y}Q(y)) \ &2,CP\\
+    &4.\ \vdash\exists{x}\forall{y}(Q(x)\supset(P(x)\vee Q(y)))\ &3,\equiv sub\ iii)
+  \end{align*}
+\end{enumerate}
+
+\noindent 92.解：$A=p\vee\sim p$
+\noindent 93.解：$P(x)$
+\noindent 94.解：
+
+设$I=<D,I_0>$，$\sigma\in\sum_I$为解释I下的任意指派；
+
+若对于任意的$a\in D$，$I(C)(\sigma[x|a])=t$，则$I(\forall{x}C)(\sigma)=t$,所以$I(C\supset\forall{x}C)(\sigma)=t$，即$C\supset\forall{x}C$在I下可满足；
+
+若存在$a\in D$，$I(C)(\sigma[x|a])=f$，令$\varphi=\sigma[x|a]$，则$I(C)(\varphi)=f$，$I(\sim C)(\varphi)=t$，所以$I(C\supset\forall{x}C)(\varphi)=I(\sim C\vee\forall{x}C)(\varphi)=t$，即$C\supset\forall{x}C$在I下可满足；
+
+综上，若C是任意合式公式，I是任意解释，则$C\supset\forall{x}C$在I下是可满足的。\newline
+
+\noindent 95.解：
+
+必要性成立,$\models A$，根据完全性定理，$\vdash A$成立，根据Gen规则有$\vdash\forall{x}A$，根据$\vee+$规则$\vdash(A\supset\forall{x}A)$，根据可靠性定理$\models(A\supset\forall{x}A)$成立。
+
+充分性不成立，$A=p\wedge\sim p$即为反例。\newline
+
+\noindent 96.解：
+\begin{align*}
+  &1.\ \forall{x}P(x)\vdash P(a) \ &AS_4\\
+  &2.\ \forall{x}P(x)\vdash P(b) \ &AS_4\\
+  &3.\ \forall{x}P(x)\vdash P(a)\wedge P(b) \ &1,2,\wedge+\\
+  &4.\ \vdash\forall{x}P(x)\supset P(a)\wedge P(b) \ &3,CP\\
+  &5.\ \vdash\exists{x}(P(x)\supset P(a)\wedge P(b)) \ &4\\
+\end{align*}
+
+对任意项t，取解释$I=<\{a,b\},I_0>$，指派$\sigma\in \sum_I$，使得$I(P(a))=t,I(P(b))=f$且$\sigma(t)=a$，则$I(P(t)\supset P(a)\wedge P(b))=f$，即不存在项t使得$\models A(t)$。\newline
+
+\noindent 97.解：
+\begin{enumerate}
+  \item 可满足的。
+  
+  若M，N皆为永真式，$\exists{x}(M\equiv N)\supset(\exists{x}M\supset\exists{x}N)$为有效的；
+  
+  令$M=\forall{y}(x\times y=0),N=p\wedge\sim p$，则$\exists{M\equiv N}$为t，$\exists{x}M$为t，$\exists{x}N$为f，故$\exists{x}(M\equiv V)\supset(\exists{M}\equiv\exists{N})$为f。
+  
+  \item 有效的
+  \begin{align*}
+    &1.\ \forall{x}(M\equiv N),\forall{x}M\vdash M,M\supset N \ &\in,AS_4,\wedge- \\
+    &2.\ \forall{x}(M\equiv N),\forall{x}M\vdash \forall{x}N \ &1,\overline{MP},Gen\\
+    &3.\ \forall{x}(M\equiv N)\vdash \forall{x}M\supset\forall{x}N \ &2,CP\\
+    &4.\ \forall{x}(M\equiv N)\vdash \forall{x}N\supset\forall{x}M \ &\text{同理}\\
+    &5.\ \vdash \forall{x}(M\equiv N)\supset(\forall{x}M\equiv\forall{x}N) \ &3,4,\wedge+,CP
+  \end{align*}
+\end{enumerate}
+
+\noindent 98.解：
+
+以下的解法对题目做了稍微的修改：$A=\exists{z}(\exists{x}\forall{y}P(x,y,z)\supset\exists{W}Q(w,z))$。
+
+\noindent A的前束范式为$\exists{z}\forall{x}\exists{x}\exists{w}(P(x,y,z)\supset Q(w,z))$\newline
+B的前束范式为$\exists{z}\exists{y}\forall{x}\exists{w}(P(x,y,z)\supset Q(w,z))$\newline
+C的前束范式为$\exists{z}\exists{y}\forall{x}\exists{w}(P(x,y,z)\supset Q(w,z))$\newline
+
+故$B\equiv C,B\supset A,C\supset A$为有效的，下面对$B\supset A$进行简要的证明：
+
+设$D=\forall{x}\exists{x}\exists{w}(P(x,y,z)\supset Q(w,z)),E=\exists{y}\forall{x}\exists{w}(P(x,y,z)\supset Q(w,z))$
+\begin{align*}
+  &1. \ \vdash E\supset D \\
+  &2. \ \vdash \sim D\supset \sim E \ &1,\supset\sim \\
+  &3. \ \forall{z}\sim D\vdash \sim D \ &AS_4 \\
+  &4. \ \forall{z}\sim D\vdash \forall{z}\sim E \ &2,3,\overline{MP},Gen\\
+  &5. \ \vdash \forall{z}\sim D\supset \forall{z}\sim E \ &4,CP\\
+  &6. \ \vdash \exists{z}E\supset \exists{z}D \ &5,\supset\sim \\
+  &7. \ \vdash B\supset A \ &6
+\end{align*}
+
+\noindent 99.解：
+
+有效的。
+\begin{align*}
+  &1. \ \exists{x}P(x)\supset \forall{x}Q(x),P(x)\vdash Q(x) \ &\in,\exists+,\overline{MP},AS_4 \\
+  &2. \ \vdash \exists{x}P(x)\supset \forall{x}Q(x)\supset \forall{x}(P(x)\supset Q(x)) \ &1,CP,Gen,CP
+\end{align*}
+
+\noindent 100.解：
+
+不是有效的，令解释$I=<N,J_0>$，其中N表示自然数集，$Q(x)\text{、}P(x)$在解释I和指派$\sigma\in\sum_I$下都为“x是奇数”，显然$I(\forall{x}(P(x)\supset Q(x))\supset(\exists{x}P(x)\supset\forall{x}Q(x)))(\sigma)=f$。\newline
+
+\noindent 101.解：
+
+不是有效的，令解释$I=<N,J_0>$，其中N表示自然数集，$Q(x)\text{、}P(x)$在解释I和指派$\sigma\in\sum_I$下都为“x是奇数”、“x是偶数”，显然$I(\forall{x}(P(x)\supset Q(x))\equiv(\forall{x}P(x)\supset\exists{x}Q(x)))(\sigma)=f$。\newline
+
+\noindent 102.解：
+
+不是有效的，由84题知$\exists{x}\forall{y}(P(x)\equiv P(y))\equiv (\exists{x}P(x)\equiv\forall{y}P(y))$，显然$\exists{x}P(x)\equiv\forall{y}P(y)$不是有效的，故$\exists{x}\forall{y}(P(x)\equiv P(y))$也不是有效的。\newline
+
+\noindent 103.解:
+
+不是有效的，令解释$I=<N,I_0>$，其中N为自然数集，$R(x,y)$在I下表示为“$\frac{x}{y}=0$”。\newline
+
+\noindent 104.解：
+\begin{enumerate}
+  \item $I(x+y=1)(\sigma[x|1][y|1])=f$，所以$I(\forall{x}\forall{y}(x+y=1))(\sigma)=f$，I'下同理。
+  \item
+  \begin{itemize}
+    \item a为任意自然数
+    \begin{align*}
+      &I(x+y=1)(\sigma[x|2][y|a])=f\\
+      &I(\sim (x+y=1))(\sigma[x|2][y|a])=t\\
+      &I(\forall{y}\sim (x+y=1))(\sigma[x|2])=t\\
+      &I(\sim\forall{y}\sim (x+y=1))(\sigma[x|2])=f\\
+      &I(\forall{x}\exists{y} (x+y=1))(\sigma)=f\\
+    \end{align*}
+    \item a为任意实数
+    \begin{align*}
+      &I(x+y=1)(\sigma[x|a][y|1-a])=t\\
+      &I(\sim(x+y=1))(\sigma[x|a][y|1-a])=f\\
+      &I(\forall{y}\sim(x+y=1))(\sigma[x|a])=f\\
+      &I(\sim\forall{y}\sim (x+y=1))(\sigma[x|a])=t\\
+      &I(\forall{x}\exists{y} (x+y=1))(\sigma)=t\\
+    \end{align*}
+  \end{itemize}
+  \item 设a为任意整数
+  \begin{align*}
+    &I(x+y=1)(\sigma[x|a][y|a+2])=f\\
+    &I(\forall{y}(x+y=1))(\sigma[x|a])=f\\
+    &I(\sim\forall{y}(x+y=1))(\sigma[x|a])=t\\
+    &I(\forall{x}\sim\forall{y}(x+y=1))(\sigma)=t\\
+    &I(\exists{}{x}\sim\forall{y}(x+y=1))(\sigma)=f\\
+  \end{align*}
+  I'下同理。
+  \item 有2),3)可直接推出
+  \item \begin{align*}
+    &I(O(x))(\sigma[x|1])=t\\
+    &I(\sim O(x))(\sigma[x|1])=f\\
+    &I(\forall{x}\sim O(x))(\sigma)=f\\
+    &I(\exists{x}\sim O(x))(\sigma)=t\\
+    \\
+    &I(O(x))(\sigma[x|2])=f\\
+    &I(\forall{x} O(x))(\sigma)=f\\
+  \end{align*}
+  故$I(\exists{x}O(x)\supset\forall{x}O(x))(\sigma)=f$
+\end{enumerate}
+
+\noindent 105.解：
+
+存在，$A=P(x)\vee\sim P(x)$即满足条件。\newline
+
+\noindent 106.解：
+
+不一定，若$A=B=P(x)$则{A,B}是协调的，若$A=\sim B=\sim P(x)$,则{A,B}不协调。\newline
+
+\noindent 107.解：
+
+不一定成立，$M=P,N=\sim P,C=P\wedge\sim P$。\newline
+
+\noindent 108.解：
+
+不一定成立，$M=N=P\vee\sim P,C=(P\vee\sim P)\wedge(\sim(P\vee\sim P))$。\newline
+
+\noindent 110.解：
+
+不一定成立，令$A=\sim\forall{x}P(x)$，则$A'=\sim\exists{x}P(x)$，则$\vdash A\supset A'$不成立。\newline
+
+\noindent 111.解：定理3.7.6，也可根据定义2.4.1进行证明。\newline
+
+\noindent 112.解：同111题。\newline
+
+\noindent 113.解：
+
+可由逻辑结果的定理直接推出
+\begin{enumerate}
+  \item 成立
+  \item 不成立
+\end{enumerate}
+
+\noindent 122.解：
+\begin{align*}
+  &1.\ \vdash \forall{x}(A\supset B)\equiv
+\end{align*}
+
+
+
+
 
 
 \end{document}

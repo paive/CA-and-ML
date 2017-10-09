@@ -1,0 +1,765 @@
+\documentclass[a4paper]{ctexart}
+
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\newtheorem{thm}{\hspace{2em}定理}[subsection]
+\newtheorem{lem}{\hspace{2em}引理}
+\newtheorem{defi}{\hspace{2em}定义}[subsection]
+\usepackage{amssymb}
+\usepackage{framed}
+\usepackage{color}
+\definecolor{shadecolor}{rgb}{0.8,0.8,0.8}
+\usepackage{enumitem} 
+\usepackage{multirow}
+\usepackage{ulem}
+\newcommand{\li}{\uline{\hspace{0.5em}}}
+\renewcommand{\labelenumi}{\arabic{enumi})}
+\newcommand{\shade}[1]{\colorbox{shadecolor}{#1}}
+\newcommand{\redshade}[1]{\colorbox{red}{#1}}
+\begin{document}
+
+\title{数理逻辑课本知识点}
+\author{作者:杨森}
+\maketitle
+\newpage
+
+\section{形式系统}
+
+\textbf{定义 1.2} 证明序列，对任何一个系统来说证明序列的定义都是一样的。
+
+\textbf{定义 1.3} 由前提出发的证明序列，也是对任何系统来说定义都是一样的。 
+
+\section{命题逻辑}
+\subsection{P系统}
+公式结构归纳法：使用时一般不构造集合。
+
+派生命题连接词：做题时可默认派生命题连接词的存在和定义。
+\begin{defi}
+  代入$\theta$
+\end{defi}
+\begin{defi}
+  变元代入：只改变命题变元，不改变连接词和符号。变元带入$\theta$记为$S_{A_1,A_2,\cdots,A_n}^{P_1,P_2,\cdots,P_n}$。
+\end{defi}
+\begin{defi}
+  出现：P系统中的出现指的是一个命题变元有无在一个公式中出现。
+\end{defi}
+
+\subsection{定理和导出规则}
+派生规则$\in,\in_{+},\overline{MP}$可以再其他系统中直接使用。
+
+代入规则sub：过$\Gamma\vdash A$且$A_1,A_2,\cdots,A_n\in Formula,P_1,P_2,\cdots,P_n$为不在$\Gamma$中出现的命题变元，则$\Gamma\vdash S_{A_1,A_2,\cdots,A_n}^{P_1,P_2,\cdots,P_n}A $。(2016.五)
+
+派生规则$\rightarrow_+$:若$\Gamma,A\vdash B$，则$\Gamma\vdash A\rightarrow B$。\colorbox{shadecolor}{可考}
+
+演绎定理CP：$\Gamma,A\vdash B$，当且仅当$\Gamma\vdash A\rightarrow B$。
+
+9.$\vdash\neg A\rightarrow(\neg B\rightarrow \neg(A\vee B))$
+
+10.$\vdash A\rightarrow(\neg A\rightarrow B)$
+
+\subsection{P的语义和协调性}
+\begin{defi}
+  P系统命题变元的指派：$\varphi:Var(P)\rightarrow\{t,f\}$; 公式的指派：$\varphi:Var(A)\rightarrow\{t,f\}$; $\Gamma$的指派：$\varphi:Var(\Gamma)\rightarrow\{t,f\}$
+\end{defi}
+\begin{lem}
+  P系统命题变元的指派，存在一个唯一的函数$V_\varphi:Formula\rightarrow\{t,f\}$满足
+  \begin{enumerate}[itemindent=2em]
+    \item 若$p\in Var(P)$，则$V_\varphi(p)=\varphi(p)$ 
+    \item 若$A\in Formula$，则$V_\varphi(\neg A)=\neg V_\varphi(A)$
+    \item 若$A,B\in Formula$，则$V_\varphi(A\vee B)= V_\varphi(A)\vee V_\varphi(B)$
+  \end{enumerate}
+\end{lem}
+可用结构归纳法证明唯一性，先设两个函数$V_\varphi,V_\sigma$满足条件，再证其相等。\shade{可考}
+
+\begin{defi}
+  公式或公式集的真值。
+  \begin{enumerate}[itemindent=2em]
+    \item $\varphi(A)$为A关于$\varphi$的真值。
+    \item $\varphi$满足A
+    \item $\varphi$不满足A
+    \item $\varphi$满足$\Gamma$
+  \end{enumerate}
+\end{defi}
+
+\begin{defi}
+  公式间或公式与公式集的关系
+  \begin{enumerate}[itemindent=2em]
+    \item 永真式、重言式 
+    \item 永假式、矛盾式
+    \item 若$A\rightarrow B$为永真式，则称A蕴含B，记为$A=>B$
+    \item 若$A\equiv B$为永真式，则称A等价于B，记为$A<=>B$
+    \item $\Gamma\models A$
+    \item $\Gamma$可满足
+    \item A可满足，A不可满足
+  \end{enumerate}
+\end{defi}
+
+\begin{thm}
+  一些蕴含式
+\end{thm}
+\begin{thm}
+  一些等价式，注意De Morgan律。
+\end{thm}
+\begin{thm}
+  基于真值的推理规则
+\end{thm}
+\begin{thm}
+  可靠性定理：若$\Gamma\vdash A$，则$\Gamma\models A$。用第二归纳法证明。\shade{常考，系统的可靠性}
+\end{thm}
+
+\begin{defi}
+  \begin{enumerate}[itemindent=2em]
+    \item 系统绝对协调：$Th(P)\neq WFF_P$;\newline
+    \item 系统否定协调：$\forall{A}\ A\not\in Th(P)\text{或者}\neg A\not\in Th(P)$;\newline
+    \item 公式集$\Gamma$协调：$Th(\Gamma)\neq WFF_P$
+  \end{enumerate}
+\end{defi}
+
+\begin{thm}
+  若逻辑系统P满足
+  \begin{enumerate}[itemindent=2em]
+    \item $\vdash A\rightarrow(\neg A\rightarrow B)$
+    \item MP为有效推理规则
+  \end{enumerate}
+  那么P是绝对协调的当且仅当P关于否定协调。
+\end{thm}
+
+\begin{thm}
+  \begin{enumerate}[itemindent=2em]
+    \item P系统否定协调；
+    \item P系统绝对协调；
+  \end{enumerate}
+\end{thm}
+
+\begin{lem}
+  若$\Gamma\subseteq Formula$为协调的且$A\not\in Th(\Gamma)$，则$\Gamma\cup\{\neg A\}$协调。
+\end{lem}
+
+\subsection{P的完全性}
+\begin{defi}
+  公式集$\Gamma\subseteq Formula$的完全性：若$\forall{A\in Fromula}\  A\in\Gamma\text{或}\neg A\in\Gamma$,则$\Gamma$是完全的。
+\end{defi}
+
+\begin{thm}
+  P的完全性定理：$\Gamma\subseteq Formula$且$A\in Formula$，若$\Gamma\models A$则$\Gamma\vdash A$。
+\end{thm}
+
+\begin{thm}
+  Godel完全性定理
+\end{thm}
+
+\begin{thm}
+  $A_1,A_2,\cdots,A_n\in Formula$,$\Gamma\subseteq Formula$且$p_1,p_2,\cdots,p_n$不在$\Gamma$中出现，则
+  \begin{enumerate}[itemindent=2em]
+    \item 若$\models A$则$\models S_{A_1,A_2,\cdots,A_n}^{p_1,p_2,\cdots,p_n}A$
+    \item 若$\Gamma\models A$则$\Gamma\models S_{A_1,A_2,\cdots,A_n}^{p_1,p_2,\cdots,p_n}A$
+  \end{enumerate}
+  \shade{可考，完全性定理+sub规则}
+\end{thm}
+
+\begin{defi}
+  $$A^\varphi=\left\{\begin{aligned}
+    &A\quad\text{若}\varphi(A)=t\\
+    &\neg A\quad\text{若}\varphi(A)=f\\
+  \end{aligned}\right.
+  $$
+\end{defi}
+
+\begin{thm}
+  $A\in Formula$,$\varphi$为P的指派且$p_1,p_2,\cdots,p_n$包括了所有在A中出现的命题变元，则
+  \begin{enumerate}[itemindent=2em]
+    \item 若$\varphi(A)=t$,则$p_1^\varphi,p_2^\varphi,\cdots,p_n^\varphi\vdash A$
+    \item 若$\varphi(A)=f$,则$p_1^\varphi,p_2^\varphi,\cdots,p_n^\varphi\vdash \neg A$
+  \end{enumerate}
+  \shade{可考，结构归纳法}
+\end{thm}
+
+\subsection{P的独立性}
+\begin{defi}
+  $FS=\{\sum,Term,Formula,Axiom,Rule\}$
+  \begin{enumerate}[itemindent=2em]
+    \item 一条公理A独立：$FS_1=\{\sum,Term,Formula,Axiom-A,Rule\}$,$A\not\in Th(FS_1)$
+    \item 公理模式ASM独立：$FS_2=\{\sum,Term,Formula,Axiom-ASM,Rule\}$,有$A\in ASM$使得$A\not\in Th(FS_2)$
+    \item 推演规则r独立：$FS_2=\{\sum,Term,Formula,Axiom,Rule-r\}$,必有$A\in Th(FS_1)$使得$A\not\in Th(FS_3)$
+  \end{enumerate}
+\end{defi}
+
+\begin{thm}
+  P系统的MP规则独立
+\end{thm}
+\begin{thm}
+  P系统的每个公理模式都独立。
+\end{thm}
+
+\subsection{命题连接词}
+\begin{defi}
+  命题连接词的定义：一个n-元真值函数$\varphi:\{t,f\}^n\rightarrow\{t,f\}$的形式符号。
+  t和f分别是0-元真值函数，|表示与非，$\downarrow$表示或非。
+\end{defi}
+
+\begin{defi}
+  命题连接词的完全性。
+\end{defi}
+
+\begin{thm}
+  $\{\neg,\vee\}$是完全的。\shade{可考}
+\end{thm}
+
+\begin{thm}
+  $\{\neg,\wedge\},\{\neg,\rightarrow\},\{f,\rightarrow\},\{|\},\{\downarrow\},\{\vee,\not\equiv,t\}$都是完全的。
+\end{thm}
+
+\begin{defi}
+  $A_N^M$为用N替换掉M在A的所有指定出现之结果。(所有指定出现并不是所有出现，可理解为指定的部分出现)
+\end{defi}
+
+\begin{thm}
+  等值替换定理
+  \begin{enumerate}[itemindent=2em]
+    \item $A_N^M\in Formula$ \shade{可考,结构归纳法}
+    \item 若$\models M\equiv N$，则$\models A\equiv A_N^M$ \shade{可考，结构归纳法}
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+  派生推演规则$\equiv sub$，若$\vdash M\equiv N$，则$\vdash A\equiv A_N^M$。\shade{可考，结构归纳法}
+\end{thm}
+
+\begin{defi}
+  $\lambda$抽象，$p_1,p_2,\cdots,p_n$包括了公式A中出现的所有命题变元，则可以定义一个n-元真值函数$[\lambda p_1,\cdots,\lambda p_nA]:\{t,f\}^n\rightarrow\{t,f\}$如下：$[\lambda p_1,\cdots,\lambda p_nA](x_1,x_2,\cdots,x_n)=\varphi(A)$,其中$\varphi(p_i)=x_i$。
+  
+  一个重要的性质：若$[\lambda p_1,\cdots,\lambda p_nA]=[\lambda p_1,\cdots,\lambda p_nB]$，则$\models A\equiv B$。
+\end{defi}
+
+\begin{defi}
+  \begin{enumerate}[itemindent=2em]
+    \item 文字：命题变元及其否定，$p,\neg p$；
+    \item 短句：有限个文字的析取；
+    \item 合取项：有限个文字的合取；
+    \item 合取范式：有限个短句的合取；
+    \item 析取范式：有限个合取项的析取。
+  \end{enumerate}
+\end{defi}
+
+\begin{thm}
+  n-元真值函数$h:\{t,f\}^n\rightarrow\{t,f\}$，且$p_1,p_2,\cdots,p_n$为n个互不相同的命题变元，则有析取范式A使$[\lambda p_1,\cdots,\lambda p_nA]=h$。\shade{可考}
+\end{thm}
+
+\begin{thm}
+  对于任意公式B，都有析取范式A使得$\models A\equiv B$。并称A为B的析取范式。
+\end{thm}
+
+\begin{defi}
+  若公式A中不包含出$\neg,\vee,\wedge$之外的命题变元，且$\neg$只作用在命题变元上，则A为否定范式。
+\end{defi}
+
+\begin{defi}
+  两个文字互补，是指其中一个为另一个的否定。
+\end{defi}
+
+\begin{defi}
+  归纳定义公式A的合取支集合C(A):
+  \begin{enumerate}[itemindent=2em]
+    \item A文字，C(A)={A}
+    \item $A=B\vee C,C(A)=C(B)\cup C(C)$
+    \item $A=B\wedge C,C(A)=\{D\wedge E|D\in C(B),E\in C(C)\}$
+  \end{enumerate}
+\end{defi}
+
+\begin{thm}
+  若A为否定范式，$\varphi$为P系统的一个指派，则$\models_\varphi A$当且仅当有$D\in C(A)$使$\models_\varphi D$。(任意公式都可以找到等价的否定范式) \shade{可考，结构归纳法}
+\end{thm}
+
+\begin{thm}
+  若A为否定范式，则A为永假式当且仅当A的每个合取支中均含互补文字。
+\end{thm}
+
+\subsection{P的紧致性}
+\begin{thm}
+  $\Gamma\subseteq Formula$是协调的当且仅当$\Gamma$是可满足的。
+\end{thm}
+
+\begin{thm}
+  紧致性定理：$\Gamma\subseteq Formula$ \shade{可考，反证法}
+  \begin{enumerate}[itemindent=2em]
+    \item $\Gamma$为协调的当且仅当$\Gamma$的每个有穷子集协调。
+    \item $\Gamma$可满足的当且仅当$\Gamma$的每个有穷自己可满足。
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+  $\Gamma\subseteq Formula$ 以下条件等价：
+  \begin{enumerate}[itemindent=2em]
+    \item $\Gamma$协调。
+    \item $\Gamma$可满足。
+    \item $\Gamma$每个有穷子集协调。
+    \item $\Gamma$每个有穷子集可满足。
+  \end{enumerate}
+\end{thm}
+
+\subsection{消解}
+\begin{defi}
+  L表示文字；C表示短句，也表示短句中出现的所有文字之集合，$C-L$表示$C-\{L\}$；两个文字，一个为另一个的否定，称之为互补；$\qed$表示空短句(空短句为永假式)。
+\end{defi}
+
+\begin{defi}
+  $C_1,C_2$表示两个短句，$L_1\in C_1,L_2\in C_2$为互补文字，则$(C_1-L_1)\cup(C_2-L_2)$为$C_1,C_2$的消解式，$L_1,L_2$为消解基，$C_1,C_2$为消解母式。
+\end{defi}
+
+\begin{thm}
+  若$C$为$C_1,C_2$的消解式，则$C_1,C_2\vdash C$。\shade{可考，完全性定理}
+\end{thm}
+
+\begin{defi}
+  S为短句集，C为短句，短句序列$C_0,\cdots,C_m$若满足：
+  \begin{enumerate}[itemindent=2em]
+    \item $C_m=C$
+    \item $C_i\in S$
+    \item 有$0\leq j,k<i$使$C_i$为$C_j$和$C_k$的消解式。
+  \end{enumerate}
+  则C为S的消解结结果,记为$S\Vdash C$，$C_0,\cdots,C_m$为由S导出C的消解序列。有S导出$\qed$的序列为S的反驳或否证。
+\end{defi}
+
+\begin{thm}
+  S为短句集，$C,C_1,C_2$为短句
+  \begin{enumerate}[itemindent=2em]
+    \item 若$S\in C$,则$S\Vdash C$
+    \item 若$S'\Vdash C$且$S'\subseteq S$,,则$S\Vdash C$
+    \item 若$C$为$C_1,C_2$的消解式，则$C_1,C_2\Vdash C$
+    \item 若$S'\Vdash C$,若对每个$C'\in S'$皆有$S\Vdash C'$,则$S\Vdash C$
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+  若$S\Vdash C$，则$S\vdash C$。\shade{可考，第二归纳法}
+\end{thm}
+
+\begin{thm}
+  若$\Gamma$为短句的有穷集合且$\Gamma$不可满足，则$\Gamma\Vdash\qed$。\redshade{可考，压轴}
+\end{thm}
+
+\begin{thm}
+  消解原理：若短句集S是不可满足的当且仅当$S\Vdash \qed$。\shade{可考，紧致性定理}
+\end{thm}
+
+\section{一阶逻辑}
+\subsection{F系统}
+\begin{defi}
+  原子公式：atf
+\end{defi}
+
+\begin{defi}
+  $(\alpha,\beta)$出现，子公式
+\end{defi}
+
+\begin{thm}
+  子公式=分量
+\end{thm}
+
+\begin{defi}
+  约束出现、自由出现、约束变元、自由变元、闭公式(无自由变元)、句子(无除约束变元之外的变元)。(注意：一个个体变元可能既有约束出现又有自由出现，既是约束比变元又是自由变元)
+\end{defi}
+
+\begin{defi}
+  $ n\geq 1$，若$x_1,\cdots,x_n$为不同的个体变元，且$t_1,\cdots,t_n\in Term$，则归纳定义$S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}$:
+  \begin{enumerate}[itemindent=2em]
+    \item 若x为个体变元，则
+    $$S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}(x)=\left\{
+    \begin{aligned}
+      &x\quad x\not\in\{x_1,\cdots,x_n\} \\
+      &t_i \quad x=t_i\ (1\leq i\leq n)
+    \end{aligned}\right. $$
+    \item 若f为$m\geq 1$元函数变元或常元且$\tau_1,\cdots,\tau_m\in Term$，则
+    $$S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}(f(\tau_1,\cdots,\tau_m))=f(S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}(\tau_1),\cdots,S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}(\tau_m))$$
+    \item 若P为$m\geq 0$元谓词变元或常元且$\tau_1,\cdots,\tau_m\in Term$，则  $$S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}(P(\tau_1,\cdots,\tau_m))=P(S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}(\tau_1),\cdots,S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}(\tau_m))$$
+    \item 若$A\in Formula$，则$S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}(\neg A)=\neg S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}(A)$
+    \item 若$A,B\in Formula$，则$S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}(A\vee B)=S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}(A)\vee S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}(B)$
+    \item 若$A\in Formula$，且x为个体变元，则
+    $$S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}(\forall{x}A)=\left\{
+    \begin{aligned}
+      &\forall{x}S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}(A) \quad &x\not\in\{x_1,\cdots,x_n\}\\
+      &\forall{x}S^{x_1,\cdots,x_{i-1},x_{i+1},\cdots,x_n}_{t_1,\cdots,t_{i-1},t_{i+1},\cdots,t_n}(A) \quad& x=x_i
+    \end{aligned}
+    \right.$$
+  \end{enumerate}
+\end{defi}
+
+\begin{thm}
+  $ n\geq 1$，若$x_1,\cdots,x_n$为不同的个体变元，且$t_1,\cdots,t_n\in Term$，则
+  \begin{enumerate}[itemindent=2em]
+    \item $t\in Term,S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}(t)\in Term$
+    \item $A\in Axiom,S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}(A)\in Axiom$
+    \item $A\in Fromula,S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}(A)\in Formula$
+  \end{enumerate}
+\end{thm}
+
+\begin{defi}
+  项t对A中个体变元x自由，公式D对命题变元P自由
+\end{defi}
+
+\begin{defi}
+  $ n\geq 1$，若$A_1,\cdots,A_n\in Formula$，且$p_1,\cdots,p_n$是不同命题变元，则归纳定义$S^{p_1,\cdots,p_n}_{A_1,\cdots,A_n}$
+  \begin{enumerate}[itemindent=2em]
+    \item 若$A\in Atom$,则 
+    $$S^{p_1,\cdots,p_n}_{A_1,\cdots,A_n}(A)=\left\{
+    \begin{aligned}
+      &A\quad A\not\in \{A_1,\cdots,A_n\}\\
+      &A_i \quad A=p_i    
+    \end{aligned}\right.$$
+    
+    \item 若$A\in Formula$，则$S^{p_1,\cdots,p_n}_{A_1,\cdots,A_n}(\neg A)=\neg S^{p_1,\cdots,p_n}_{A_1,\cdots,A_n}(A)$
+    \item 若$A,B\in Formula$，则$S^{p_1,\cdots,p_n}_{A_1,\cdots,A_n}(A\vee B)=S^{p_1,\cdots,p_n}_{A_1,\cdots,A_n}(A)\vee S^{p_1,\cdots,p_n}_{A_1,\cdots,A_n}(B)$
+    \item 若$A\in Formula$，且x为个体变元，则
+    $S^{p_1,\cdots,p_n}_{A_1,\cdots,A_n}(\forall{x}A)=\forall{x}S^{p_1,\cdots,p_n}_{A_1,\cdots,A_n}(A)$
+  \end{enumerate}
+\end{defi}
+
+\begin{thm}
+  x为个体变元，$t\in Term$且$A,D\in Formula$
+  \begin{enumerate}[itemindent=2em]
+    \item $S^{p_1,\cdots,p_n}_{A_1,\cdots,A_n}(A)\in Formula$
+    \item t对A中x为自由的，如果代入发生的话，则t的每个个体变元都是$S_t^xA$的自由变元
+    \item 若D对A中p自由，则D的每个自由变元都是$S_D^pA$的自由变元
+  \end{enumerate}
+\end{thm}
+
+\subsection{F的定理和导出规则}
+用$\sigma$表示$S^{x_1,\cdots,x_n}_{t_1,\cdots,t_n}$，用$\theta$表示$S^{p_1,\cdots,p_n}_{A_1,\cdots,A_n}$
+\begin{thm}
+  设$A\in Formula_P$且$\Gamma\subseteq Formula_P$，则
+  \begin{enumerate}[itemindent=2em]
+    \item 若$\vdash_PA$，则$\vdash_FA$
+    \item 若$\Gamma\vdash_PA$，则$\Gamma\vdash_FA$
+  \end{enumerate}
+\end{thm}
+
+\begin{defi}
+  定义递归函数Var
+  \begin{enumerate}[itemindent=2em]
+    \item Var(t)表示t中的个体变元集合
+    \item Var(A)表示A中的个体变元集合
+    \item Var($\Gamma$)表示$\Gamma$中的个体变元集合
+  \end{enumerate}
+\end{defi}
+
+\begin{defi}
+  \begin{enumerate}[itemindent=2em]
+    \item 若A为P系统中的永真式，则称A为P-永真式。
+    \item 若B为P-永真式，且$A=\theta(B)$，则称A为P-永真的。
+    \item 称P中的证明为P-证明。
+  \end{enumerate}
+  \emph{规则P}
+  \begin{enumerate}
+    \item 若$\models_PA$则$\vdash_FA$
+    \item 若A为P-永真的，则$\vdash_FA$
+    \item 若$\vdash A_1,\cdots,\vdash A_n$,且$A_1\wedge\cdots\wedge A_n\rightarrow B$为P-永真的，则$\vdash B$
+  \end{enumerate}
+\end{defi}
+
+递归定义$\psi:Formula\rightarrow Formula$为消除A中的所有量词，将原子公式全转为命题变元p。
+\begin{lem}
+  对每个$A\in Formula$，若$\vdash A$，则$\vdash_PA$ \shade{重要手段，可考，第二归纳法}
+\end{lem}
+
+\begin{thm}
+  协调性定理 \shade{可考，证否定协调，反证法}
+  \begin{enumerate}[itemindent=2em]
+    \item F为绝对协调的
+    \item F为否定协调的 
+  \end{enumerate}
+\end{thm}
+
+\begin{defi}
+  \begin{enumerate}[itemindent=2em]
+    \item $(\alpha,\beta)$指定出现
+    \item 出现为肯定的，出现为否定的
+    \item 所有的指定出现都是肯定的，则为肯定的，所有的指定出现都是否定的，则为否定的
+  \end{enumerate}
+\end{defi}
+
+\begin{defi}
+  $A_N^M$为用N替换掉M在A的所有指定出现之结果。(所有指定出现并不是所有出现，可理解为指定的部分出现)
+\end{defi}
+
+\begin{thm}
+  $\rightarrow sub$蕴含替换定理 \shade{可考，结构归纳法}
+  \begin{enumerate}[itemindent=2em]
+    \item M在A中为肯定的，则$\vdash\forall{y_1,\cdots,y_k}(M\rightarrow N)\rightarrow(A\rightarrow A_N^M)$
+    \item M在A中为否定的，则$\vdash\forall{y_1,\cdots,y_k}(M\rightarrow N)\rightarrow(A_N^M\rightarrow A)$
+    \item M在A中为肯定的且$\vdash M\rightarrow N$，则$\vdash A\rightarrow A_N^M$
+    \item M在A中为否定的且$\vdash M\rightarrow N$，则$\vdash A_N^M\rightarrow A$
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+  $\equiv sub$等值替换定理 \shade{可考，蕴含替换定理}
+  \begin{enumerate}
+    \item $\forall{y_1,\cdots,y_k}(M\equiv N)\rightarrow(A\rightarrow A_N^M)$
+    \item 若$\vdash M\equiv N$，则$\vdash A\rightarrow A_N^M$
+    \item 若$\vdash M\equiv N$且$\Vdash A$，则$\vdash A_N^M$
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+  ($\alpha\beta$)设$A,C\in Formula$，x、y为个体变元，如果y不是C的自由变元，且y对C中x自由，且$\vdash A$,则$\vdash A^{\forall{x}C}_{\forall{y}S_y^xC}$，用$A(C,x,y)$表示$A^{\forall{x}C}_{\forall{y}S_y^xC}$
+\end{thm}
+
+$\exists_+$规则，若$\Gamma\vdash S^x_tA$，则$\Gamma\vdash \exists{x}A$
+
+\indent$\exists_-$规则，若$\Gamma,A\vdash B$，且x在$\Gamma\cup\{B\}$中不自由，则$\Gamma,\exists{x}A\vdash B$ ($\Gamma,\forall{x}A\vdash B$也成立)
+
+C规则，若$\Gamma\vdash\exists{x}A,\ \Gamma,S^x_yA\vdash B$，y对A中x自由，且y在$\Gamma\cup\{\exists{x}A,B\}$中不自由，则$\Gamma\vdash B$
+
+IP规则，$\Gamma,\neg A\vdash B$且$\Gamma,\neg A\vdash\neg B$，则$\Gamma\vdash A$
+
+Case规则，$\Gamma\vdash A\vee B$，且$\Gamma,A\vdash C$,$\Gamma,B\vdash C$，则$\Gamma\vdash C$
+
+$\in_-$，若$\Gamma,A\vdash B$且$\Gamma,\neg A\vdash B$，则$\Gamma\vdash B$
+
+\subsection{代入定理}
+\begin{defi}
+  $x_1,y_1,\cdots,x_n,y_n(n\geq 1)$为个体变元且$x_1,\cdots,x_n$互不相同，递归定义$I^{x_1,\cdots,x_n}_{y_1,\cdots,y_n}:\sum^*\rightarrow \sum^*$(替换所有，包括量词)，通常记为$\mu$，当$y_1,\cdots,y_n$也互不相同时，把$I_{x_1,\cdots,x_n}^{y_1,\cdots,y_n}$记为$\mu^{-1}$
+\end{defi}
+
+\begin{defi}
+  $A,C\in Formla$，x、y为个体变元
+  \begin{enumerate}[itemindent=2em]
+    \item y不是C的自由变元，且y对C中x自由，则称C，x，y满足$\alpha\beta$条件
+    \item 用$A(C,x,y)$表示$A^{\forall{x}C}_{\forall{y}S_y^xC}$
+  \end{enumerate}
+\end{defi}
+
+\begin{defi}
+  带有前提的证明序列，$A_0,A_1,\cdots,A_m$
+  \begin{enumerate}[itemindent=2em]
+    \item $\Gamma$为有穷集
+    \begin{enumerate}
+      \item Ax:$A_i\in Axiom$
+      \item Hyp:$A_i\in Gamma$
+      \item MP:$A_k=A_j\rightarrow A_i\ (0\leq j,k<i)$
+      \item Gen:x在$\Gamma$不自由，$\Gamma\vdash \forall{x}A_j$
+      \item $\alpha\beta$:满足$\alpha\beta$条件的C和个体变元x，y使$A_i=A_j(C,x,y)$
+    \end{enumerate}
+    \item 无穷集，只要其某个有穷子集能证明A，则无穷集$\Gamma$能证明A。
+  \end{enumerate}
+\end{defi}
+
+\begin{thm}
+  全程指定规则：$\Gamma\vdash\forall{x}A$且t对A中x自由，则$\Gamma\vdash S_t^xA$。
+\end{thm}
+
+\begin{lem}
+  $x_1,\cdots,x_n$为不同的个体变元$\Gamma\subseteq Formula$为有穷集且$\Gamma\vdash A$，若$U=\{A_1,\cdots,A_n\}$在$\Gamma\cup\{A\}$中不自由，则存在一个由$\Gamma$导出A的证明R满足：
+  \begin{enumerate}[itemindent=2em]
+    \item U在R中不自由
+    \item R中无通过对U中个体变元应用Gen规则之结果。
+  \end{enumerate}
+  \redshade{可考，第二归纳法，勿漏了$\alpha\beta$规则}
+\end{lem}
+
+\begin{thm}
+  $\in_+$ 若$\Gamma_1\vdash A$，且$\Gamma_1\subseteq\Gamma_2$，则$\Gamma_2\vdash A$ \redshade{可考}
+\end{thm}
+
+\begin{thm}
+  若$\Gamma\vdash A_1,\cdots,\Gamma\vdash A_n$，且$A_1\wedge\cdots A_n\rightarrow B$为P永真的，则$\Gamma\vdash B$
+\end{thm}
+
+\begin{thm}
+  CP规则，若$\Gamma,A\vdash B$，则$\Gamma\vdash A\rightarrow B$ \shade{可考，第二归纳法，留意$\alpha\beta$规则}
+\end{thm}
+
+\begin{thm}
+  广义带入定理GPS 设$A,M,N\in Formula$，且$\Gamma\subseteq Formula$，则
+  \begin{enumerate}[itemindent=2em]
+    \item $[\rightarrow sub] i)$ 若$\Gamma\vdash A$，M在A中肯定的且$\vdash M\rightarrow N$，则$\Gamma\vdash A_N^M$
+    \item $[\rightarrow sub] ii)$ 若$\Gamma\vdash A$，M在A中否定的且$\vdash N\rightarrow M$，则$\Gamma\vdash A_N^M$
+    \item $[\equiv sub]$ 若$\Gamma\vdash A$，M在A中肯定的且$\vdash M\equiv N$，则$\Gamma\vdash A_N^M$
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+  替换规则 $\Gamma\vdash A$.
+  \begin{enumerate}
+    \item $sub-x$: 若x在$\Gamma$中不自由且t对A中x自由，则$\Gamma\vdash S_t^xA$
+    \item $sub-p$: 若p在$\Gamma$中不出现且D对A中p自由，则$\Gamma\vdash S_D^pA$ \redshade{可考，分类讨论，第二归纳法}
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+  $\forall{}_+$ 若$\Gamma\vdash S_a^xA$且a不在$\Gamma\cup\{A\}$中出现的个体常元，则$\Gamma\vdash \forall{x}A$ \redshade{重点可考，第二归纳法，需缩小范围}
+\end{thm}
+
+\subsection{前束范式}
+
+\begin{defi}
+  空量词，量词为肯定的，量词为否定的
+\end{defi}
+
+\begin{defi}
+  前束范式定义：
+  \begin{enumerate}[itemindent=2em]
+    \item 无空量词 
+    \item 所有两次均不出现在$\vee,\neg$辖域内
+  \end{enumerate}
+  如果A,B都是E系统(在F中增加了一条公理模式$AS_6:\exists{x}A\equiv\neg\forall{x}\neg A$)公式，B为前束范式且$\vdash A\equiv B$，则称B为A的前束范式。
+\end{defi}
+
+\begin{defi}
+  矫正的：
+  \begin{enumerate}[itemindent=2em]
+    \item 无空量词
+    \item 约束变元不重名
+    \item 没有一个变元既是约束的，有是自由的
+  \end{enumerate}
+  前束范式都是矫正的，反之不然
+\end{defi}
+
+$A\wedge\forall{x}B$，问$\forall{x}$出现在几个命题连接词的辖域内？答案：需要考虑系统中有哪些最基本的命题连接词，在F系统中答案为3
+
+\begin{thm}
+  前束范式定理：A有前束范式B，则$\vdash A\equiv B$ \shade{可考}
+\end{thm}
+换名要针对约束变元换名。
+
+\subsection{F的语义}
+
+\begin{defi}
+  二元偶$I=<D,I_0>$为F的一个解释，其中
+  \begin{enumerate}[itemindent=2em]
+    \item D为非空集，为F的个体域或论域
+    \item $I_0$为一个映射
+      \begin{enumerate}
+        \item c是个体常元$I_0(c)\in D$
+        \item f是n元个体函数常元$I_0(f):D^n\rightarrow D$
+        \item p是命题常元$I_0(p)\in Bool$
+        \item P是n元谓词常元$I_0(P):D^n\rightarrow Bool$
+      \end{enumerate}
+  \end{enumerate}
+\end{defi}
+
+\begin{defi}
+  指派$\sigma\in \sum_I$
+  \begin{enumerate}
+    \item c是个体变元$\sigma(c)\in D$
+    \item f是n元个体函数变元$\sigma(f):D^n\rightarrow D$
+    \item p是命题变元$\sigma(p)\in Bool$
+    \item P是n元谓词变元$\sigma(P):D^n\rightarrow Bool$
+  \end{enumerate}
+\end{defi}
+
+\begin{defi}
+  归纳定义$I(t):\sum_I\rightarrow D$,$I(A):\sum_I\rightarrow Bool$
+\end{defi}
+
+\begin{defi}
+  满足，在I下可满足，可满足，矛盾式、不可满足、永假式，I下有效的，有效的、永真式，I下可满足，模型，$\models$：逻辑结果
+\end{defi}
+若$\Gamma\vdash A$，则对$\Gamma$的每个模型I皆有$\models_IA$，反之不然。
+句子：无除约束变元之外的任何变元
+句子或句子集有反模型
+\begin{thm}
+  若$A\in Formula,t\in Term,I=<D,I_0>$为F的一个解释且$\sigma,\theta\in\sum_I$
+  \begin{enumerate}[itemindent=2em]
+    \item 若对t中所有个体变元x和函数变元f皆有$\sigma(x)=\theta(x)$且$\sigma(f)=\theta(f)$，则$I(t)(\sigma)=I(t)(\theta)$ \shade{可考，项的归纳法}
+    \item 若对A中所有个体变元x,和函数变元f,命题变元p和谓词变元P,皆有$\sigma(x)=\theta(x),\sigma(f)=\theta(f),\sigma(p)=\theta(p),\sigma(P)=\theta(P)$，则$I(A)(\sigma)=I(A)(\theta)$ \shade{可考，项结构归纳法，公式结构归纳法}
+  \end{enumerate} \redshade{重要}
+\end{thm}
+
+\begin{thm}
+  $A\in Formula$，且$I=<D,I_0>$为一个解释。
+  \begin{enumerate}[itemindent=2em]
+    \item $\models_IA$当且仅当$\models_I\forall{A}$
+    \item $\models A$当且仅当$\models\forall{A}$
+    \item A在I下可满足当且仅当$\exists{x}A$在A下可满足
+    \item A可满足当且仅当$\exists{x}A$可满足
+  \end{enumerate}
+\end{thm}
+
+\begin{defi}
+  $B\in Formula,\ x_1,\cdots,x_n$为B的所有自由变元
+  \begin{enumerate}[itemindent=2em]
+    \item $\bar{B}=\forall{x_1,\cdots,x_n}B$为B的全称闭包
+    \item $\bar{B}=\exists{x_1,\cdots,x_n}B$为B的存在闭包
+  \end{enumerate}
+\end{defi}
+
+\begin{defi}
+  $\theta(x)$对A中x均为自由的，就称$\theta$在A上为自由的
+\end{defi}
+
+\begin{lem}
+  对每个解释$I=<D,I_0>$，若$\sigma\in\sum_I$且$\theta$为一个替换，则存在唯一的一个$\bar{\sigma}$使
+  \begin{enumerate}[itemindent=2em]
+    \item 若x为个体变元$\bar{\sigma}(x)=I(\theta(x))(\sigma)$
+    \item 若f为函数变元$\bar{\sigma}(f)=\sigma(f)$
+    \item 若p为命题变元$\bar{\sigma}(p)=\sigma(p)$
+    \item 若P为谓词变元$\bar{\sigma}(P)=\sigma(P)$
+  \end{enumerate}
+\end{lem}
+
+\begin{thm}
+  值代入定理 $A\in Formula,t\in Term$且I为解释。 \shade{可考，结构归纳法}
+  \begin{enumerate}[itemindent=2em]
+    \item $\sigma\in\sum_I$，则对每个$\theta$皆有$I(\theta(t))(\sigma)=I(t)(\sigma\cdot\theta)$
+    \item $\sigma\in\sum_I$，且$\theta$在A上自由，则$I(\theta(A))(\sigma)=I(A)(\sigma\cdot\theta)$ \redshade{结构归纳法}
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+  可靠性定理，$A\in Formula$且$\Gamma\subseteq Formula$
+  \begin{enumerate}[itemindent=2em]
+    \item 若$\vdash A$，则$\models A$  \redshade{结构归纳法}
+    \item 若$\Gamma\vdash A$，则$\Gamma\models A$
+    \item 若$\mu$为一阶理论F的模型且$\vdash_FA$，则$\models_\mu A$
+  \end{enumerate}
+\end{thm}
+
+\subsection{独立性}
+定义两个谓词$I^{(n)}(a,\cdots,a)=t,\Phi^{(n)}(a,\cdots,a)=f$。
+
+\begin{lem}
+  若$A\in Formula$且$\vee$不在A中出现，则有a上的解释$I$和$I'$以及$\sigma\in\sum_I$和$\sigma '\in\sum_{I'}$使$I(A)(\sigma)=t,I'(A)(\sigma')=f$。\shade{结构归纳法}
+\end{lem}
+
+\begin{thm}
+  独立性定理
+  \begin{enumerate}[itemindent=2em]
+    \item MP的独立性：因为$\vdash p\vee\neg p$且$p\vee\neg p$不是公理，而使用一次Gen又只增加一个前缀$\forall{x}$，所以仅由公理即Gen规则不能得到$p\vee\neg p$，故MP是独立的。
+    \item Gen独立性：将$$
+      I(\forall{x}A)(\sigma)=\left\{\begin{aligned}
+        &f \ \text{有}d\in D\text{使得}I(A)(\sigma[x|d])=f\\
+        &t \ \text{否则}
+      \end{aligned}\right.
+    $$改为$I(\forall{x}A)(\sigma)=f$ \redshade{重要}
+    \item $AS_1-AS_3$独立性，借助P系统中的数值解释，消除掉量词
+    \item $AS_4$独立性，\item Gen独立性：将$$
+      I(\forall{x}A)(\sigma)=\left\{\begin{aligned}
+        &f \ \text{有}d\in D\text{使得}I(A)(\sigma[x|d])=f\\
+        &t \ \text{否则}
+      \end{aligned}\right.
+    $$改为$$
+      I(\forall{x}A)(\sigma)=\left\{\begin{aligned}
+        &t \ \text{有}d\in D\text{使得}I(A)(\sigma[x|d])=t\\
+        &f \ \text{否则}
+      \end{aligned}\right.
+    $$
+    \item $AS_5$独立性：
+    
+  \end{enumerate}
+\end{thm}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

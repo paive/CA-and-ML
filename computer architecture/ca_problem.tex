@@ -1,14 +1,60 @@
 \documentclass[a4paper]{ctexart}
 
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
 \usepackage{titlesec}
 \usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amssymb}
-\usepackage{multirow}
 \usepackage{ulem}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{color}
+\definecolor{grey}{RGB}{90,90,90}
+\usepackage{verbatim}
+\newcommand{\li}{\uline{\hspace{0.5em}}}
 \newcommand{\blankspace}[1]{\vskip #1\baselineskip}
 
 \begin{document}
+\section{习题指导}
+\begin{enumerate}
+  \item $P_{116}$ 例4.5 MULTD指令处于写结果段的最后，对应的保留站已经处于空闲状态，为什么还要在表格中列出这一行？
+  \item $P_{116}$ 例4.6 按照书上的解释SUBI指令与BNEZ指令之间是否应该有一个延迟？
+  \item $P_{116}$ 例4.6 五遍循环展开应该得到几个循环体(6个？)，4个循环体也可以达到无延迟的目的。甚至两个循环体也能达到无延迟。
+  \item $P_{118}$ 例4.8 同样四遍循环也可以消除空操作，另外“忽略分支指令的延迟槽”这句话应该如何解释？书中答案分支指令没有延迟，是否正确？
+  \item $P_{121}$ 第3题 分支延迟槽中放置一条浮点存指令，而浮点存指令的延迟一般大于1，这对一个循环的执行周期会不会有影响？
+  \item $P_{122}$ 第6题 (2) 将一个循环展开四次不应该是得到五个循环体吗？
+  \item $P_{122}$ 第6题 (4) 为什么不是在多流出的情况下在一个周期流出了多条指令？
+  \item $P_{122}$ 第6题 (5) 浮点存指令算是整数指令吗？整数指令都有哪些？
+  \item $P_{181}$ 例5.9 为什么预取至少提前7次循环进行。
+  \item $P_{223}$ 表7.1 写回Cache写作废，为什么CPU B读X需要更新主存？
+  \item $P_{223}$ 表7.2 写回Cache写更新，进行写更新时为什么还要更新主存内容？
+  \item $P_{232}$ 表7.3 第7步，锁状态是否应该为独占？
+  \item $P_{232}$ 表7.3 第5步，处理器$P_2$执行交换，Cache为什么失效？
+  \item $P_{237}$ 图7.12.a S状态下写失效后状态为什么改变？
+  \item $P_{237}$ 图7.12.b E状态到U状态为何是响应作废消息，而不是写入缺失？
+  \item $P_{237}$ 图7.12.b S状态到U状态为何缺少写入缺失？
+  \item $P_{237}$ 写直达状态下还需要独占状态吗？
+  \item $P_{237}$ 写直达Cache条件下监听协议，共享状态下的Cache块响应总线上的读不命中消息时还会终止存储器访问吗？
+  \item $P_{237}$ 图7.13 该图是否错误，干净专有状态具体含义？
+\end{enumerate}
 
-$$\exists{x}\forall{y}(A\rightarrow S_y^xA)$$
+\section{往年考题}
+\begin{enumerate}
+  \item 2017.3 分支延迟为多少？如果上一条指令是相关指令，分支指令是否要与其隔一个周期？是否有分支延迟槽？
+  \item 2016.二 数据从存储器到访存功能部件，数据送往向量功能部件，把结果存入向量寄存器是否还需要一拍时间？(2015.8、2014.二)
+  \item 2016.四 如何解题？
+  \item 2016.六 (3) 应用A需要80\%的资源是指其执行时间占总时间的80\%吗？
+  \item 2013.3 猝发长度(burst length)为16是不是表示一次能读16倍块大小的长度？
+  \item 2013.5 答案是否唯一？平均访存时间=命中时间+失效率x失效开销
+  \item 2012.2 如何解题？
+  \item 2009.三 如何解题？
+  \item 2009.五 什么是boosting architecture，如何解题？
+  \item 2006.2 2005.四 2004.4 2003.2 2003.3 2002.三.2 2001.四.2
+\end{enumerate}
+
+\section{其他}
+\begin{enumerate}
+  \item coherent coherence consistence 相关性 一致性。
+  \item 回答监听协议和目录协议是需不需要写出具体发送到消息和响应的操作，还是在状态转换图中体现出来就行？
+\end{enumerate}
+
 \end{document}

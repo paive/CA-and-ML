@@ -7,6 +7,7 @@
 \usepackage{amssymb}
 \usepackage{multirow}
 \usepackage{ulem}
+\usepackage{float}
 \newcommand{\li}{\uline{\hspace{0.5em}}}
 \renewcommand{\labelenumi}{\arabic{enumi})}
 
@@ -162,14 +163,10 @@ P'系统可以看做P系统由$\sim(p\supset q)$出发进行的证明
 
 \noindent 24.解:
 
-A是R的定理
-\begin{align*}
-  &1.\quad \vdash A*A &Axiom \\
-  &2.\quad \vdash A*(A*A) &Axiom \\
-  &3.\quad \vdash A &1,2,<A,(B*A),B> \\
-\end{align*}
+定理必是对称的
 
 \noindent 25.解：
+
 令$\Gamma=\{\sim P\}$(P为命题变元)。
 \begin{enumerate}
   \item P'是协调的
@@ -178,6 +175,7 @@ A是R的定理
 \end{enumerate}
 
 \noindent 26.解:
+
 设命题变元p在A中不出现。
 \begin{align*}
   &1.\quad \vdash p\supset S_{A}^p p  &Axiom \\
@@ -332,7 +330,7 @@ $$
 \noindent 33.解:
 
 构造如下的数值解释：
-\begin{table}[!hbp]
+\begin{table}[H]
   \begin{tabular}{c|c}
     & $\sim$ \\
     \hline
@@ -472,17 +470,9 @@ $\{\vee,\wedge,\supset,\equiv\}$不是完全集
   &8. \ \vdash Q' \ &6,7,Rule\ ii)
 \end{align*}
 
-\noindent 45.此题可能存疑
+\noindent 45.
 
-若$S=\cup_\varphi\{p_1^\varphi\wedge p_2^\varphi\wedge\cdots\}$，其中$$p_i^\varphi=
-\left\{
-  \begin{aligned}
-    &p_i,\quad &\text{若}\varphi(p_i)=t\\
-    &\sim p_i, \quad &\text{若}\varphi(p_i)=f\\
-  \end{aligned}
-\right.
-$$
-因此，S中的每一个元素只有一个指派使其为真，所以S是析取有效的，但其任意有限子集不是析取有效的。\newline
+利用紧致性证明，若任何有限子集$\{A_1,\cdots,A_n\}$不是析取有效，则存在一个指派$\varphi$使得$\varphi(A_i)=f$，故$\{\neg A_1,\cdots,\neg A_n\}$可满足，根据紧致性，$\neg S(\text{对S中的每个元素取反})$可满足，设$\sigma(\neg S)=t$，则$\sigma(S)=f$，故S不是析取有效的。
 
 \noindent 46.
 \begin{align*}

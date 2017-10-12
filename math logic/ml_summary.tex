@@ -451,7 +451,7 @@
     \item 称P中的证明为P-证明。
   \end{enumerate}
   \emph{规则P}
-  \begin{enumerate}
+  \begin{enumerate}[itemindent=3em]
     \item 若$\models_PA$则$\vdash_FA$
     \item 若A为P-永真的，则$\vdash_FA$
     \item 若$\vdash A_1,\cdots,\vdash A_n$,且$A_1\wedge\cdots\wedge A_n\rightarrow B$为P-永真的，则$\vdash B$
@@ -495,7 +495,7 @@
 
 \begin{thm}
   $\equiv sub$等值替换定理 \shade{可考，蕴含替换定理}
-  \begin{enumerate}
+  \begin{enumerate}[itemindent=2em]
     \item $\forall{y_1,\cdots,y_k}(M\equiv N)\rightarrow(A\rightarrow A_N^M)$
     \item 若$\vdash M\equiv N$，则$\vdash A\rightarrow A_N^M$
     \item 若$\vdash M\equiv N$且$\Vdash A$，则$\vdash A_N^M$
@@ -535,7 +535,7 @@ $\in_-$，若$\Gamma,A\vdash B$且$\Gamma,\neg A\vdash B$，则$\Gamma\vdash B$
   带有前提的证明序列，$A_0,A_1,\cdots,A_m$
   \begin{enumerate}[itemindent=2em]
     \item $\Gamma$为有穷集
-    \begin{enumerate}
+    \begin{enumerate}[itemindent=3em]
       \item Ax:$A_i\in Axiom$
       \item Hyp:$A_i\in Gamma$
       \item MP:$A_k=A_j\rightarrow A_i\ (0\leq j,k<i)$
@@ -631,7 +631,7 @@ $A\wedge\forall{x}B$，问$\forall{x}$出现在几个命题连接词的辖域内
   \begin{enumerate}[itemindent=2em]
     \item D为非空集，为F的个体域或论域
     \item $I_0$为一个映射
-      \begin{enumerate}
+      \begin{enumerate}[itemindent=3em]
         \item c是个体常元$I_0(c)\in D$
         \item f是n元个体函数常元$I_0(f):D^n\rightarrow D$
         \item p是命题常元$I_0(p)\in Bool$
@@ -642,7 +642,7 @@ $A\wedge\forall{x}B$，问$\forall{x}$出现在几个命题连接词的辖域内
 
 \begin{defi}
   指派$\sigma\in \sum_I$
-  \begin{enumerate}
+  \begin{enumerate}[itemindent=2em]
     \item c是个体变元$\sigma(c)\in D$
     \item f是n元个体函数变元$\sigma(f):D^n\rightarrow D$
     \item p是命题变元$\sigma(p)\in Bool$
@@ -746,20 +746,258 @@ $A\wedge\forall{x}B$，问$\forall{x}$出现在几个命题连接词的辖域内
         &f \ \text{否则}
       \end{aligned}\right.
     $$
-    \item $AS_5$独立性：
-    
+    \item $AS_5$独立性：递归定义$\beta$函数
+    \begin{enumerate}[itemindent=3em]
+      \item $\beta(A\in Atom)=A$
+      \item $\beta(\neg A)=\neg\beta(A)$
+      \item $\beta(B\vee C)=\beta(B)\vee\beta(C)$
+      \item $\beta(\forall{y}B)=\left\{\begin{aligned}
+        &p\wedge\neg p\ \text{若有}\forall{y}B=\forall{x}P(x)
+        &\forall{y}\beta(B) \ \text{否则}
+      \end{aligned}\right.$
+    \end{enumerate}
+    \item $\alpha\beta$独立性，构造解释$$I(\forall{z}A)(\sigma)=\left\{\begin{aligned}
+      &f\ \text{若}z=x \\
+      &f\ \text{若}z\neq x \text{且有}d\in D\text{使}I(A)(\sigma[z|d])=f
+      &t\ \text{其他}
+    \end{aligned}\right.$$
   \end{enumerate}
 \end{thm}
 
+\subsection{协调性和完全性}：
+\begin{thm}
+  如果$\Gamma\subseteq L(F)$，则下列条件等价：
+  \begin{enumerate}[itemindent=2em]
+    \item 若$A\in L(F)$，则$A\not\in Th(\Gamma)$或$\neg A\not\in Th(\Gamma)$
+    \item 有$A\in L(F)$，使$A\not\in Th(\Gamma)$或$\neg A\not\in Th(\Gamma)$
+    \item $\Gamma$是协调的
+  \end{enumerate}
+\end{thm}
 
+\begin{defi}
+  $\Gamma,\Gamma'\subseteq L(F)$，若$\Gamma\cup\Gamma'$为协调的，则称$\Gamma$与$\Gamma'$协调，否则称其为不协调。
+\end{defi}
 
+\begin{thm}
+  $\Gamma\subset L(F)$且$A_1,\cdots,A_n\in L(F)$
+  \begin{enumerate}[itemindent=2em]
+    \item $A_1,\cdots,A_n$与$\Gamma$不协调当且仅当$\Gamma\vdash\neg A_1\cup\cdots\cup\neg A_n$
+    \item $A$与$\Gamma$不协调当且仅当$\Gamma\vdash\neg A$
+    \item 若$\Gamma$为协调的且$\Gamma\vdash A$，则A与$\Gamma$协调。
+  \end{enumerate}
+\end{thm}
 
+\begin{defi}
+  $\Gamma\subseteq Formula$。
+  \begin{enumerate}[itemindent=2em]
+    \item 完全性：对任意$A\in L(F)$，都有$A\in\Gamma$或$\neg A\in\Gamma$，则A为完全的。
+    \item $\Gamma$极大协调
+    \begin{enumerate}[itemindent=3em]
+      \item $\Gamma$协调
+      \item 若有$A\in L(F)$使$A\not\in\Gamma$，则A与$\Gamma$不协调。
+    \end{enumerate}
+    \item 节省解释：$I=<D,I_0>,^\#D\leq^\#L(F)$
+    \item 节省模型
+  \end{enumerate}
+\end{defi}
 
+\begin{thm}
+  若$A\in L(F)$，且$\Gamma\subseteq L(F)$为极大协调的，则
+  \begin{enumerate}[itemindent=2em]
+    \item $A\in\Gamma$当且仅当$\Gamma\vdash A$
+    \item $A\in \Gamma$当且仅当$\neg A\not\in\Gamma$
+  \end{enumerate}
+\end{thm}
 
+\begin{lem}
+  设$S\subseteq 2^{L(F)}$,若$<S,\subseteq>$是全序集且每个$\Gamma$都是协调的，则$\cup S$是协调的。
+\end{lem}
 
+\begin{defi}
+  $F_1,F_2$是两个一阶逻辑形式的系统，$\Gamma_1\in L(F_1),\Gamma_2\in L(F_2)$
+  \begin{enumerate}[itemindent=2em]
+    \item 若$L(F_1)\subseteq L(F_2)$，则$F_2$为$F_1$的膨胀，记为$F_1\subseteq F_2$
+    \item 若$L(F_1)\subset L(F_2)$，则$F_2$为$F_1$的真膨胀，记为$F_1\subset F_2$
+    \item 若$L(F_1)\subset L(F_2)$，且$Th(F_1\cup\Gamma_1)\subseteq Th(F_2\cup\Gamma_2)$，则称$F_2\cup\Gamma_2$为$F_1\cup\Gamma_1$的扩张，记为。$F_2\cup\Gamma_2\subseteq F_1\cup\Gamma_1$
+    \item 若$F_2\cup\Gamma_2$为$F_1\cup\Gamma_1$的扩张，且对每个$A\in L(F_1)$皆有$\Gamma_1\vdash_{F_1}A$当且仅当$\Gamma_2\vdash_{F_2}A$，则称$F_2\cup\Gamma_2$为$F_1\cup\Gamma_1$的保守扩张，记为$F_2\cup\Gamma_2\leq F_1\cup\Gamma_1$ 
+  \end{enumerate}
+\end{defi}
 
+\begin{thm}
+  若$F_2\cup\Gamma_2\leq F_1\cup\Gamma_1$，则$F_1\cup\Gamma_1$为协调的当且仅当$F_2\cup\Gamma_2$为协调的。 \shade{可考}
+\end{thm}
 
+\begin{thm}
+  若除个体常元之外，一阶逻辑形式系统$F_1$和$F_2$的其余符号都相同，如果$F_1\subseteq F_2$且$\Gamma\subseteq L(F_1)$，则    \shade{可考，第二归纳法}
+  \begin{enumerate}[itemindent=2em] 
+    \item $F_1\cup\Gamma\leq F_2\cup\Gamma$
+    \item $F_1\cup\Gamma$为协调的当且仅当$F_2\cup\Gamma$为协调的。
+  \end{enumerate}
+\end{thm}
 
+\begin{thm}
+  $\Gamma\subseteq L(F)$为协调的，则有$\Gamma'\in L(F)$使 \shade{可考，zorn引理}
+  \begin{enumerate}[itemindent=2em]
+    \item $\Gamma\subseteq\Gamma'$
+    \item $\Gamma'$为极大协调的
+  \end{enumerate} 
+\end{thm}
 
+\begin{thm}
+  若$\Gamma\subseteq L(F)$为协调的，则有节省解释$I$是$\Gamma$在$I$下可满足。
+\end{thm}
+
+\begin{thm}
+  若$\Gamma\subseteq L(F)$，则下列条件等价：
+  \begin{enumerate}[itemindent=2em]
+    \item $\Gamma$为协调的
+    \item 有节省解释I，使$\Gamma$在I下为可满足的
+    \item $\Gamma$为可满足的
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+  若$\Gamma\subseteq L(F)$，则下列条件等价：
+  \begin{enumerate}[itemindent=2em]
+    \item $\Gamma$为协调的
+    \item $\Gamma$有模型
+    \item $\Gamma$有节省模型
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+  Godel完全性定理：若$A\in L(F),\Gamma\subseteq L(F)$，则
+  \begin{enumerate}[itemindent=2em]
+    \item $\vdash A$当且仅当$\models A$
+    \item $\Gamma\vdash A$当且仅当$\Gamma\models A$ \shade{可考}
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+  若$A\in L(F),\Gamma\subseteq L(F)$，则下列条件等价：
+  \begin{enumerate}[itemindent=2em]
+    \item $\Gamma\models A$
+    \item 若节省解释I及$\sigma\in\sum_I$使$(I,\sigma)$满足$\Gamma$，则$(I,\sigma)$满足A。 \shade{可考}
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+  紧致性定理 设$\Gamma\subseteq L(F)$
+  \begin{enumerate}[itemindent=2em]
+    \item $\Gamma$协调的当且仅当$\Gamma$的每个有穷子集协调
+    \item $\Gamma$为可满足的当且仅当$\Gamma$的每个有穷子集可满足
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+  若$\Gamma\subseteq L_0(F)$，则$\Gamma$有模型当且仅当$\Gamma$的每个有穷子集都有模型。
+\end{thm}
+
+\begin{thm}
+  设F为一个一阶理论，S为F的公设集合，则
+  \begin{enumerate}[itemindent=2em]
+    \item F为协调的当且仅当F有模型
+    \item F有模型当且仅当S的每个有穷子集有模型
+  \end{enumerate}
+\end{thm}
+
+\section{等词}
+\subsection{等词系统}
+增加了两条公理：$AS_6: x=x$和$AS_7: x=y\rightarrow(S_x^zA\rightarrow S_y^zA)\ A\text{为原子公式}$。
+
+若x,y对A中x自由的$\vdash x=y\rightarrow(S_x^zA\equiv S_y^zA)$ \shade{可考，结构归纳法}
+
+\begin{thm}
+  如果一阶理论F具有一个二元谓词常元“=”且满足以下条件:
+  \begin{enumerate}[itemindent=2em]
+    \item $\vdash_Fx=x$
+    \item 如f为一个n-元个体函数常元或变元，则$\vdash_Fx_1=y_1\wedge\cdots\wedge x_n=y_n\rightarrow f(x_1,\cdots,x_n)=f(y_1,\cdots,y_n)$
+    \item 若P为一个谓词变元或常元，则$\vdash_Fx_1=y_1\wedge\cdots\wedge x_n=y_n\rightarrow(P(x_1,\cdots,x_n)\rightarrow P(y_1,\cdots,y_n))$
+  \end{enumerate}
+  则F为一个带等词的一阶理论。  \shade{可考，结构归纳法}
+\end{thm}
+
+$$\exists!!_xA=\forall{x}\forall{y}(A\wedge S_y^xA\rightarrow x=y)$$
+$$\exists!_xA=\exists{x}A\wedge\forall{x}\forall{y}(A\wedge S_y^xA\rightarrow x=y)$$
+
+\subsection{等词模型}
+$$I_s=\left\{
+\begin{aligned}
+  &t \ \text{若}a=b\\
+  &f \ \text{若}a\neq b
+\end{aligned}\right. \quad a,b\in S
+$$
+为S上的恒等关系
+\begin{defi}
+  $F^=$为带等词的一阶逻辑系统，$F$为带等词的一阶理论。
+  \begin{enumerate}[itemindent=2em]
+    \item 如果$F^=$的解释$I=<D,I_0>$使得$I_0=I_s$则I为$F^=$的一个等词解释
+    \item 若F的模型I为等词解释，则称I为F的等词模型
+  \end{enumerate}
+\end{defi}
+
+\begin{thm}
+  若$A\in L(F^=),\Gamma\subseteq L(F^=),\Gamma\vdash_=A$且$I=<D,I_0>$为$F^=$的等词解释，则
+  \begin{enumerate}[itemindent=2em]
+    \item 若$\sigma\in\sum_I$使$(I,\sigma)$满足$\Gamma$，则$\models_{(I,\sigma)}A$
+    \item 若$\Gamma$在I下为有效的，则$\models_{I}A$
+  \end{enumerate}
+\end{thm}
+
+\begin{defi}
+  若$I',I''$分别为一阶逻辑系统F的两个解释，若对每个句子A皆有$\models_{F'}A$当且仅当$\models_{F''}A$，则称$I',I''$初等等价
+\end{defi}
+
+\begin{thm}
+  若$F^=$的解释$I'$为$AS_6,AS_7$的模型，则比存在$F^=$的一个等词解释$I''$使$\#D''<\#D'$且$I',I''$初等等价
+\end{thm}
+
+\begin{thm}
+  若$\Gamma\subseteq L(F^=)$为一个句子集，则下列条件等价
+  \begin{enumerate}[itemindent=2em]
+    \item $\Gamma$为协调的
+    \item $\Gamma$有等词模型
+    \item $\Gamma$有节省的等词模型
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+  若$\Gamma\subseteq L(F^=)$为一个句子集，则下列条件等价
+  \begin{enumerate}[itemindent=2em]
+    \item $\Gamma\vdash_=A$
+    \item 若I为$\Gamma$的等词模型，则$\models_IA$
+    \item 若I为$\Gamma$的节省等词模型，则$\models_IA$
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+  若$\Gamma\subseteq L(F^=)$为一个句子集，则下列条件等价
+  \begin{enumerate}[itemindent=2em]
+    \item $\Gamma$为协调的
+    \item $\Gamma$的每个有穷子集都是协调的
+    \item $\Gamma$有等词模型
+    \item $\Gamma$每个有穷子集都有等词模型
+    \item $\Gamma$有节省的等词模型
+    \item $\Gamma$每个有穷子集都有节省的等词模型
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+    若$\Gamma\subseteq L(F^=)$为一个句子集，若对每个$n\in N$，$\Gamma$都有基数大于n的又穷等词模型，则$\Gamma$有无穷等词模型。
+\end{thm}
+
+\begin{thm}
+  LST定理，若$\Gamma$有无穷等词模型，则对每个基数$a\geq ^\#DL(F^=)$，$\Gamma$皆有基数为a的等词模型。
+\end{thm}
+
+\section{课后题}
+\begin{itemize}
+  \item 可考
+  \begin{enumerate}
+    \item 浏览：8,9,21,22,28,32,36,44,74,77,92,93,105,106,107,110,130,131,
+    \item 重点：19,20,23,25,26,27,30,33,34,35,37,40,41,45,59,75,76,96,109,111,112,132,137
+  \end{enumerate}
+  \item 考过：19,25,28,30,76,90,96,137
+\end{itemize}
 
 \end{document}
